@@ -1,3 +1,5 @@
 // Vercel serverless handler – wraps Express app
-import app from '../server/index.ts';  // Vercel will transpile TS automatically
+// Import the Express app without a file extension so TypeScript
+// does not require `allowImportingTsExtensions` in the config.
+import app from '../server';
 export default app; 
