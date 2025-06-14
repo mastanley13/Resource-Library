@@ -324,7 +324,7 @@ export default function Home() {
                     {/* Dynamic visualization based on stage */}
                     <div className={`w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full bg-gradient-to-r ${stage.gradient} p-1 liquid-morph`}>
                       <div className="w-full h-full rounded-full bg-black/90 flex items-center justify-center holographic">
-                        <div className={`text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r ${stage.gradient} text-glow-neural`}>
+                        <div className="text-4xl md:text-6xl font-black text-white drop-shadow-lg">
                           {index + 1}
                         </div>
                       </div>
