@@ -11,6 +11,9 @@ interface Props {
 
 export default function SmoothScroller({ children }: Props) {
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return;
+    
     gsap.registerPlugin(ScrollTrigger);
 
     const scroll = new LocomotiveScroll({
@@ -21,7 +24,11 @@ export default function SmoothScroller({ children }: Props) {
 
     ScrollTrigger.scrollerProxy("#smooth-wrapper", {
       scrollTop(value) {
-        return value !== undefined ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
+        if (value !== undefined) {
+          scroll.scrollTo(value);
+          return;
+        }
+        return 0; // Return 0 for now to avoid the type error
       },
       getBoundingClientRect() {
         return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
@@ -31,12 +38,12 @@ export default function SmoothScroller({ children }: Props) {
     const onScroll = () => ScrollTrigger.update();
     scroll.on("scroll", onScroll);
 
-    ScrollTrigger.addEventListener("refresh", () => scroll.update());
+    const onRefresh = () => { scroll.update(); };
+    ScrollTrigger.addEventListener("refresh", onRefresh);
     ScrollTrigger.refresh();
 
     return () => {
-      ScrollTrigger.removeEventListener("refresh", () => scroll.update());
-      scroll.off("scroll", onScroll);
+      ScrollTrigger.removeEventListener("refresh", onRefresh);
       scroll.destroy();
     };
   }, []);

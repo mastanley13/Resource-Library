@@ -23,6 +23,6 @@
       "@/*": ["./client/src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "client/src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "client/src/**/*", "app/**/*", "components/**/*"],
+  "exclude": ["node_modules", "server"]
 }

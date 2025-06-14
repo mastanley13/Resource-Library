@@ -1,4 +1,4 @@
-// File: C:\Users\KieranGrogan\Documents\Strategix Site\AiTechVision\app\layout.tsx
+// File: C:\Users\Mykel\OneDrive\Desktop\StrategixAI\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
