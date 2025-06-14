@@ -85,11 +85,7 @@ export default function FeaturesSection() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-    }
+    visible: { y: 0, opacity: 1 }
   };
 
   return (
@@ -135,6 +131,7 @@ export default function FeaturesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
+          transition={{ staggerChildren: 0.2, duration: 0.6 }}
         >
           {features.map((feature, index) => (
             <motion.div 

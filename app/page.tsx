@@ -6,7 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { ScrollControls } from "@react-three/drei";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AnimatedScene from "../components/AnimatedScene";
+import EvolvedScene from "../components/EvolvedScene";
 import LoadingScreen from "../components/LoadingScreen";
 
 const SmoothScroller = dynamic(() => import("../components/SmoothScroller"), {
@@ -68,7 +68,7 @@ const consultingStages: ConsultingStage[] = [
   },
   {
     id: "implementation",
-    title: "IMPLEMENTATION",
+    title: "IMPLEMENT innovAtIon",
     subtitle: "Building the Future",
     description: "Our team works alongside yours to implement cutting-edge AI solutions, ensuring seamless integration with your existing systems and workflows.",
     features: [
@@ -213,53 +213,70 @@ export default function Home() {
 
   return (
     <SmoothScroller>
-      <div className="relative w-screen min-h-screen bg-black overflow-hidden">
+      <div className="relative w-full min-h-screen bg-black">
         {/* Fixed 3D Canvas Background */}
         <div className="fixed inset-0 z-0">
           <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
-            <ScrollControls pages={6} damping={0.1}>
-              <AnimatedScene />
+            <ScrollControls pages={5} damping={0.1}>
+              <EvolvedScene />
             </ScrollControls>
           </Canvas>
         </div>
 
         {/* Content Overlays */}
-        <div className="relative z-10 min-h-screen">
+        <div className="relative z-10">
           
           {/* Hero Section */}
-          <section className="h-screen flex flex-col items-center justify-center text-center px-6">
-            <div className="max-w-7xl mx-auto">
+          <section className="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6">
+            <div className="max-w-4xl mx-auto breathing">
               <h1 
                 id="hero-title" 
-                className="text-6xl md:text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 leading-none mb-8"
+                className="text-4xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 leading-none mb-6 md:mb-8 text-glow-neural"
               >
                 STRATEGIX
                 <br />
-                <span className="text-white">AI</span>
+                <span className="text-white text-glow-cyan">AI</span>
               </h1>
               <p 
                 id="hero-subtitle" 
-                className="text-2xl md:text-4xl lg:text-5xl text-gray-300 font-light mb-16 max-w-5xl leading-relaxed"
+                className="text-lg md:text-2xl lg:text-4xl text-gray-300 font-light mb-12 md:mb-16 max-w-4xl leading-relaxed"
               >
                 Transforming businesses through
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-medium">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-medium text-glow-cyan">
                   AI-native solutions
                 </span>
               </p>
               
-              {/* Navigation dots */}
-              <div className="flex justify-center space-x-4 mb-12">
-                {consultingStages.map((stage, index) => (
-                  <div
-                    key={stage.id}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentStage === index 
-                        ? `bg-gradient-to-r ${stage.gradient} scale-150` 
-                        : 'bg-gray-600'
-                    }`}
-                  />
-                ))}
+              {/* Story Evolution Indicator */}
+              <div className="flex flex-col items-center mb-8 md:mb-12">
+                <p className="text-sm md:text-base text-gray-400 mb-4">AI Evolution Journey</p>
+                <div className="flex justify-center space-x-3 md:space-x-4">
+                  {consultingStages.map((stage, index) => (
+                    <div
+                      key={stage.id}
+                      className={`relative transition-all duration-500 ${
+                        currentStage === index 
+                          ? 'scale-125' 
+                          : 'scale-100'
+                      }`}
+                    >
+                      <div
+                        className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all duration-500 ${
+                          currentStage >= index 
+                            ? `bg-gradient-to-r ${stage.gradient}` 
+                            : 'bg-gray-600'
+                        }`}
+                      />
+                      {currentStage === index && (
+                        <div className={`absolute inset-0 w-3 h-3 md:w-4 md:h-4 rounded-full bg-gradient-to-r ${stage.gradient} animate-ping opacity-75`} />
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs md:text-sm text-gray-500 mt-2">
+                  {currentStage < consultingStages.length ? consultingStages[currentStage].title : 'Complete'}
+                </p>
               </div>
             </div>
           </section>
@@ -269,32 +286,32 @@ export default function Home() {
             <section 
               key={stage.id}
               id={`stage-${stage.id}`}
-              className="min-h-screen flex items-center justify-center px-6 py-20"
+              className="min-h-screen flex items-center justify-center px-4 md:px-6 py-12 md:py-20"
             >
-              <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
                 
                 {/* Content Side */}
                 <div className={`order-2 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
-                  <div className="glass-effect p-8 rounded-2xl border border-white/10">
-                    <h2 className="text-5xl md:text-7xl font-black text-white mb-4">
+                  <div className="glass-effect p-6 md:p-8 rounded-2xl border border-white/10">
+                    <h2 className="responsive-title font-black text-white mb-4 text-glow-neural break-words text-container">
                       {stage.title}
                     </h2>
-                    <h3 className={`text-2xl md:text-3xl font-semibold mb-6 text-transparent bg-clip-text bg-gradient-to-r ${stage.gradient}`}>
+                    <h3 className={`text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r ${stage.gradient} text-glow-cyan`}>
                       {stage.subtitle}
                     </h3>
-                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
+                    <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed mb-6 md:mb-8">
                       {stage.description}
                     </p>
                     
                     {/* Features Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                       {stage.features.map((feature, featureIndex) => (
                         <div 
                           key={featureIndex}
-                          className="feature-item flex items-center space-x-3 p-4 rounded-lg bg-white/5 border border-white/10"
+                          className="feature-item flex items-center space-x-3 p-3 md:p-4 rounded-lg bg-white/5 border border-white/10"
                         >
-                          <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${stage.gradient}`} />
-                          <span className="text-gray-200 font-medium">{feature}</span>
+                          <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${stage.gradient} consciousness-pulse`} />
+                          <span className="text-gray-200 font-medium text-sm md:text-base">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -303,26 +320,26 @@ export default function Home() {
 
                 {/* Visual Side */}
                 <div className={`order-1 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
-                  <div className="relative">
+                  <div className="relative breathing">
                     {/* Dynamic visualization based on stage */}
-                    <div className={`w-80 h-80 mx-auto rounded-full bg-gradient-to-r ${stage.gradient} p-1`}>
-                      <div className="w-full h-full rounded-full bg-black/90 flex items-center justify-center">
-                        <div className={`text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r ${stage.gradient}`}>
+                    <div className={`w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full bg-gradient-to-r ${stage.gradient} p-1 liquid-morph`}>
+                      <div className="w-full h-full rounded-full bg-black/90 flex items-center justify-center holographic">
+                        <div className={`text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r ${stage.gradient} text-glow-neural`}>
                           {index + 1}
                         </div>
                       </div>
                     </div>
                     
-                    {/* Floating elements */}
-                    <div className="absolute inset-0 pointer-events-none">
-                      {[...Array(6)].map((_, i) => (
+                    {/* Simplified floating elements for mobile */}
+                    <div className="absolute inset-0 pointer-events-none hidden md:block">
+                      {[...Array(4)].map((_, i) => (
                         <div
                           key={i}
-                          className={`absolute w-4 h-4 rounded-full bg-gradient-to-r ${stage.gradient} opacity-60 animate-pulse`}
+                          className={`absolute w-3 h-3 rounded-full bg-gradient-to-r ${stage.gradient} opacity-60 organic-float`}
                           style={{
-                            top: `${20 + Math.sin(i * 60 * Math.PI / 180) * 30}%`,
-                            left: `${20 + Math.cos(i * 60 * Math.PI / 180) * 30}%`,
-                            animationDelay: `${i * 0.2}s`
+                            top: `${25 + Math.sin(i * 90 * Math.PI / 180) * 25}%`,
+                            left: `${25 + Math.cos(i * 90 * Math.PI / 180) * 25}%`,
+                            animationDelay: `${i * 0.3}s`
                           }}
                         />
                       ))}
@@ -334,38 +351,38 @@ export default function Home() {
           ))}
 
           {/* Final CTA Section */}
-          <section id="final-cta" className="h-screen flex flex-col items-center justify-center text-center px-6">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-5xl md:text-7xl font-black text-white mb-8">
+          <section id="final-cta" className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 py-16 md:py-24 consciousness-bg">
+            <div className="max-w-4xl mx-auto breathing">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 md:mb-8 text-glow-neural">
                 Ready to Transform
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-600 text-glow-cyan">
                   Your Business?
                 </span>
               </h2>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-12">
+              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed mb-8 md:mb-12">
                 Join the AI revolution with Strategix AI. Let's build something extraordinary together.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
                 <a
                   href="/contact"
-                  className="group relative px-12 py-6 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold text-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-cyan-500/50"
+                  className="group relative px-8 md:px-12 py-4 md:py-6 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50 btn-neural consciousness-pulse"
                 >
-                  <span className="relative z-10">Start Your AI Journey</span>
+                  <span className="relative z-10 text-glow">Start Your AI Journey</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
                 </a>
                 
                 <a
                   href="/process"
-                  className="px-12 py-6 border-2 border-cyan-400 rounded-full text-cyan-400 font-bold text-xl transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-110"
+                  className="px-8 md:px-12 py-4 md:py-6 border-2 border-cyan-400 rounded-full text-cyan-400 font-bold text-lg md:text-xl transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-105 holographic breathing"
                 >
                   Learn Our Process
                 </a>
               </div>
               
               {/* Trust indicators */}
-              <div className="mt-16 flex flex-wrap justify-center items-center gap-8 text-gray-400">
+              <div className="mt-16 flex flex-wrap justify-center items-center gap-8 text-gray-400 pb-8">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <span>Veteran-Owned</span>
@@ -383,19 +400,6 @@ export default function Home() {
           </section>
         </div>
 
-        {/* Floating Navigation */}
-        <nav className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
-          <div className="flex items-center space-x-8 px-8 py-4 glass-effect rounded-full border border-white/10">
-            <a href="/" className="text-white font-bold text-lg">Strategix AI</a>
-            <div className="flex space-x-6">
-              <a href="/solutions" className="text-gray-300 hover:text-cyan-400 transition-colors">Solutions</a>
-              <a href="/process" className="text-gray-300 hover:text-cyan-400 transition-colors">Process</a>
-              <a href="/results" className="text-gray-300 hover:text-cyan-400 transition-colors">Results</a>
-              <a href="/contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
-            </div>
-          </div>
-        </nav>
-
         {/* Progress Indicator */}
         <div className="fixed bottom-8 left-8 z-50 text-white/60">
           <div className="text-sm mb-2">Progress</div>
@@ -410,11 +414,13 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="fixed bottom-8 right-8 z-50 flex flex-col items-center text-white/60">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent to-white/40 mb-2"></div>
-          <p className="text-sm">Scroll to explore</p>
-        </div>
+        {/* Scroll Indicator - Hide on final section */}
+        {currentStage < consultingStages.length - 1 && (
+          <div className="fixed bottom-8 right-8 z-50 flex flex-col items-center text-white/60">
+            <div className="w-px h-12 bg-gradient-to-b from-transparent to-white/40 mb-2"></div>
+            <p className="text-sm">Scroll to explore</p>
+          </div>
+        )}
       </div>
     </SmoothScroller>
   );
