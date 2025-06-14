@@ -14,6 +14,7 @@ const nextConfig = {
   },
   swcMinify: true,
   poweredByHeader: false,
+  distDir: "dist",
 };
 
 module.exports = nextConfig; 
