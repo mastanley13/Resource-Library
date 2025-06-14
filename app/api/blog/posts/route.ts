@@ -5,8 +5,6 @@ import DOMPurify from 'isomorphic-dompurify';
 // Define the RSS feed URL environment variable
 const RSS_FEED_URL = process.env.RSS_FEED_URL;
 
-// Set edge runtime (as per the skeleton comments)
-export const runtime = 'edge';
 
 // Set revalidation period
 export const revalidate = 3600; // 1 hour
