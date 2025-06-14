@@ -20,9 +20,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./client/src/*"]
+      "@/*": ["./app/*"]
     }
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "client/src/**/*", "app/**/*", "components/**/*"],
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "app/**/*", "components/**/*"],
   "exclude": ["node_modules", "server"]
 }
