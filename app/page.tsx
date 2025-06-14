@@ -217,14 +217,14 @@ export default function Home() {
         {/* Fixed 3D Canvas Background */}
         <div className="fixed inset-0 z-0">
           <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
-            <ScrollControls pages={5} damping={0.1}>
+            <ScrollControls pages={3} damping={0.1}>
               <EvolvedScene />
             </ScrollControls>
           </Canvas>
         </div>
 
         {/* Content Overlays */}
-        <div className="relative z-10">
+        <div className="relative z-10 overflow-hidden">
           
           {/* Hero Section */}
           <section className="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6">
@@ -351,7 +351,7 @@ export default function Home() {
           ))}
 
           {/* Final CTA Section */}
-          <section id="final-cta" className="min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 py-16 md:py-24 consciousness-bg">
+          <section id="final-cta" className="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 consciousness-bg relative">
             <div className="max-w-4xl mx-auto breathing">
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 md:mb-8 text-glow-neural">
                 Ready to Transform
