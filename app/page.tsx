@@ -3,15 +3,12 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Canvas } from "@react-three/fiber";
-import { ScrollControls } from "@react-three/drei";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import EvolvedScene from "../components/EvolvedScene";
 import LoadingScreen from "../components/LoadingScreen";
 
-const SmoothScroller = dynamic(() => import("../components/SmoothScroller"), {
-  ssr: false,
-});
+
 
 interface ConsultingStage {
   id: string;
@@ -212,14 +209,11 @@ export default function Home() {
   }
 
   return (
-    <SmoothScroller>
-      <div className="relative w-full min-h-screen bg-black">
+    <div className="relative w-full bg-black">
         {/* Fixed 3D Canvas Background */}
         <div className="fixed inset-0 z-0">
           <Canvas camera={{ position: [0, 0, 15], fov: 60 }}>
-            <ScrollControls pages={3} damping={0.1}>
-              <EvolvedScene />
-            </ScrollControls>
+            <EvolvedScene />
           </Canvas>
         </div>
 
@@ -422,6 +416,5 @@ export default function Home() {
           </div>
         )}
       </div>
-    </SmoothScroller>
   );
 }

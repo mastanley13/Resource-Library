@@ -1,32 +1,54 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
 import * as THREE from "three";
+
+// Custom hook to track scroll position
+function useScrollPosition() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Convert scroll position to a normalized value (0-1)
+  const maxScroll = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+  const normalizedScroll = Math.min(Math.max(scrollY / maxScroll, 0), 1);
+  
+  return {
+    offset: normalizedScroll,
+    scrollY
+  };
+}
 
 // Mobile-optimized neural network that evolves with the story
 function EvolvedNeuralNetwork() {
   const groupRef = useRef<THREE.Group>(null);
   const nodesRef = useRef<THREE.Points>(null);
   const connectionsRef = useRef<THREE.LineSegments>(null);
-  const scroll = useScroll();
+  const scroll = useScrollPosition();
   const { viewport } = useThree();
 
-  // Reduced node count for mobile performance
+  // Professional node count - cleaner appearance
   const isMobile = viewport.width < 768;
-  const nodeCount = isMobile ? 40 : 80;
+  const nodeCount = isMobile ? 25 : 40;
 
   const { positions, colors, connections } = useMemo(() => {
     const positions = new Float32Array(nodeCount * 3);
     const colors = new Float32Array(nodeCount * 3);
     const connectionLines: number[] = [];
 
-    // Create nodes in a central cluster that can evolve
+    // Create nodes in a more organized, professional layout
     for (let i = 0; i < nodeCount; i++) {
-      const radius = 5 + Math.random() * 8;
+      const radius = 3 + Math.random() * 4; // Smaller, more focused cluster
       const theta = (i / nodeCount) * Math.PI * 2;
-      const phi = Math.random() * Math.PI;
+      const phi = Math.random() * Math.PI * 0.6 + Math.PI * 0.2; // More concentrated vertically
 
       positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
       positions[i * 3 + 1] = radius * Math.cos(phi);
@@ -46,7 +68,7 @@ function EvolvedNeuralNetwork() {
         const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
         const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-        if (distance < 6 && Math.random() > 0.8) {
+        if (distance < 5 && Math.random() > 0.7) {
           connectionLines.push(
             positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
             positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
@@ -101,7 +123,7 @@ function EvolvedNeuralNetwork() {
       }
       
       vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-      gl_PointSize = ${isMobile ? '15.0' : '25.0'} / -mvPosition.z;
+      gl_PointSize = ${isMobile ? '20.0' : '30.0'} / -mvPosition.z;
       gl_Position = projectionMatrix * mvPosition;
     }
   `;
@@ -130,7 +152,7 @@ function EvolvedNeuralNetwork() {
         color = mix(vec3(1.0, 0.6, 0.0), vec3(1.0, 0.8, 0.2), stage - 4.0);
       }
       
-      alpha *= 0.8;
+      alpha *= 0.9;
       gl_FragColor = vec4(color, alpha);
     }
   `;
@@ -180,7 +202,7 @@ function EvolvedNeuralNetwork() {
         color = vec3(1.0, 0.7, 0.0);
       }
       
-      float alpha = 0.3 * vIntensity;
+      float alpha = 0.6 * vIntensity;
       gl_FragColor = vec4(color, alpha);
     }
   `;
@@ -202,7 +224,7 @@ function EvolvedNeuralNetwork() {
     if (!groupRef.current) return;
 
     const time = state.clock.elapsedTime;
-    const scrollOffset = scroll.offset;
+    const scrollOffset = scroll?.offset || 0;
     const stage = scrollOffset * 5; // 0-5 representing the 5 stages
 
     // Update materials
@@ -257,10 +279,132 @@ function EvolvedNeuralNetwork() {
   );
 }
 
+// Enhanced 3D grid background component
+function GridBackground() {
+  const meshRef = useRef<THREE.Group>(null);
+  const scroll = useScrollPosition();
+
+  useFrame((state) => {
+    if (!meshRef.current) return;
+    
+    const time = state.clock.elapsedTime;
+    const scrollOffset = scroll?.offset || 0;
+    
+    // Subtle rotation and movement
+    meshRef.current.rotation.y = time * 0.005 + scrollOffset * 0.1;
+    meshRef.current.position.z = -30 + Math.sin(time * 0.1) * 2;
+  });
+
+  return (
+    <group ref={meshRef}>
+      {/* Vertical grid planes */}
+      <mesh position={[0, 0, -40]} rotation={[0, 0, 0]}>
+        <planeGeometry args={[100, 100, 20, 20]} />
+        <meshBasicMaterial 
+          color="#00aced" 
+          transparent 
+          opacity={0.1} 
+          wireframe 
+        />
+      </mesh>
+      
+      <mesh position={[-30, 0, -20]} rotation={[0, Math.PI / 2, 0]}>
+        <planeGeometry args={[80, 80, 16, 16]} />
+        <meshBasicMaterial 
+          color="#9333ea" 
+          transparent 
+          opacity={0.08} 
+          wireframe 
+        />
+      </mesh>
+      
+      <mesh position={[30, 0, -20]} rotation={[0, -Math.PI / 2, 0]}>
+        <planeGeometry args={[80, 80, 16, 16]} />
+        <meshBasicMaterial 
+          color="#06b6d4" 
+          transparent 
+          opacity={0.08} 
+          wireframe 
+        />
+      </mesh>
+    </group>
+  );
+}
+
+// Connection lines component
+function ConnectionLines() {
+  const linesRef = useRef<THREE.Group>(null);
+  const scroll = useScrollPosition();
+
+  useFrame((state) => {
+    if (!linesRef.current) return;
+    
+    const time = state.clock.elapsedTime;
+    const scrollOffset = scroll?.offset || 0;
+    
+    // Animate the connection lines
+    linesRef.current.rotation.z = Math.sin(time * 0.1) * 0.1;
+    linesRef.current.scale.setScalar(1 + scrollOffset * 0.2);
+  });
+
+  // Create connection lines between nodes
+  const connectionPoints = useMemo(() => {
+    const points: THREE.Vector3[] = [];
+    const nodeCount = 8;
+    
+    for (let i = 0; i < nodeCount; i++) {
+      for (let j = i + 1; j < nodeCount; j++) {
+        if (Math.random() > 0.7) { // Only connect some nodes
+          const radius1 = 15;
+          const radius2 = 15;
+          
+          const pos1 = new THREE.Vector3(
+            Math.sin((i / nodeCount) * Math.PI * 2) * radius1,
+            Math.cos((i / nodeCount) * Math.PI * 3) * 10,
+            Math.sin((i / nodeCount) * Math.PI * 4) * 10
+          );
+          
+          const pos2 = new THREE.Vector3(
+            Math.sin((j / nodeCount) * Math.PI * 2) * radius2,
+            Math.cos((j / nodeCount) * Math.PI * 3) * 10,
+            Math.sin((j / nodeCount) * Math.PI * 4) * 10
+          );
+          
+          points.push(pos1, pos2);
+        }
+      }
+    }
+    
+    return points;
+  }, []);
+
+  return (
+    <group ref={linesRef}>
+      {connectionPoints.length > 0 && (
+        <line>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={connectionPoints.length}
+              array={new Float32Array(connectionPoints.flatMap(p => [p.x, p.y, p.z]))}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial 
+            color="#00aced" 
+            transparent 
+            opacity={0.4}
+          />
+        </line>
+      )}
+    </group>
+  );
+}
+
 // Evolving background that transforms with the story
 function EvolvedBackground() {
   const meshRef = useRef<THREE.Mesh>(null);
-  const scroll = useScroll();
+  const scroll = useScrollPosition();
   const { viewport } = useThree();
 
   const isMobile = viewport.width < 768;
@@ -280,8 +424,8 @@ function EvolvedBackground() {
       vec3 pos = position;
       
       // Background evolves based on story stage
-      float wave = sin(pos.x * 0.1 + time * 0.5) * cos(pos.y * 0.1 + time * 0.3);
-      pos.z += wave * (1.0 + storyStage) * 2.0;
+      float wave = sin(pos.x * 0.05 + time * 0.3) * cos(pos.y * 0.05 + time * 0.2);
+      pos.z += wave * (0.5 + storyStage * 0.5);
       
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
     }
@@ -295,12 +439,12 @@ function EvolvedBackground() {
     void main() {
       vec2 uv = vUv;
       
-      // Color evolution through the story
-      vec3 color1 = vec3(0.0, 0.1, 0.2); // Discovery
-      vec3 color2 = vec3(0.1, 0.0, 0.3); // Analysis  
-      vec3 color3 = vec3(0.0, 0.2, 0.1); // Strategy
-      vec3 color4 = vec3(0.2, 0.1, 0.0); // Implementation
-      vec3 color5 = vec3(0.2, 0.2, 0.0); // Results
+      // Background evolves based on story stage with professional colors
+      vec3 color1 = vec3(0.02, 0.08, 0.15); // Discovery - Deep blue
+      vec3 color2 = vec3(0.08, 0.02, 0.18); // Analysis - Deep purple
+      vec3 color3 = vec3(0.02, 0.12, 0.08); // Strategy - Deep teal
+      vec3 color4 = vec3(0.15, 0.08, 0.02); // Implementation - Deep orange
+      vec3 color5 = vec3(0.12, 0.12, 0.02); // Results - Deep gold
       
       vec3 finalColor;
       if (storyStage < 1.0) {
@@ -315,11 +459,11 @@ function EvolvedBackground() {
         finalColor = color5;
       }
       
-      // Add subtle patterns
-      float pattern = sin(uv.x * 20.0 + time) * cos(uv.y * 20.0 + time * 0.7) * 0.02;
+      // Add subtle depth patterns
+      float pattern = sin(uv.x * 15.0 + time * 0.5) * cos(uv.y * 15.0 + time * 0.3) * 0.015;
       finalColor += pattern;
       
-      gl_FragColor = vec4(finalColor, 0.6);
+      gl_FragColor = vec4(finalColor, 0.5);
     }
   `;
 
@@ -340,7 +484,7 @@ function EvolvedBackground() {
     if (!meshRef.current) return;
 
     const time = state.clock.elapsedTime;
-    const scrollOffset = scroll.offset;
+    const scrollOffset = scroll?.offset || 0;
 
     material.uniforms.time.value = time;
     material.uniforms.storyStage.value = scrollOffset * 5;
@@ -356,7 +500,7 @@ function EvolvedBackground() {
 // Main evolved scene component
 export default function EvolvedScene() {
   const groupRef = useRef<THREE.Group>(null);
-  const scroll = useScroll();
+  const scroll = useScrollPosition();
   const { viewport } = useThree();
 
   const isMobile = viewport.width < 768;
@@ -365,67 +509,66 @@ export default function EvolvedScene() {
     if (!groupRef.current) return;
 
     const time = state.clock.elapsedTime;
-    const scrollOffset = scroll.offset;
+    const scrollOffset = scroll?.offset || 0;
 
-    // Smooth camera evolution instead of abrupt changes
-    const cameraZ = 15 - scrollOffset * 3;
-    const cameraY = Math.sin(scrollOffset * Math.PI) * 2;
-    const cameraX = Math.cos(scrollOffset * Math.PI * 0.5) * 1;
+    // Subtle, professional camera movement
+    const cameraZ = 15 - scrollOffset * 1;
+    const cameraY = Math.sin(scrollOffset * Math.PI * 0.5) * 0.5;
 
-    state.camera.position.lerp(new THREE.Vector3(cameraX, cameraY, cameraZ), 0.05);
+    state.camera.position.lerp(new THREE.Vector3(0, cameraY, cameraZ), 0.02);
     state.camera.lookAt(0, 0, 0);
 
-    // Gentle scene rotation
-    groupRef.current.rotation.y = time * 0.01 + scrollOffset * Math.PI * 0.05;
+    // Very gentle scene rotation
+    groupRef.current.rotation.y = time * 0.005;
   });
 
   return (
     <group ref={groupRef}>
-      {/* Optimized lighting for mobile */}
-      <ambientLight intensity={isMobile ? 0.4 : 0.3} color="#1a1a2e" />
+      {/* Clean, professional lighting */}
+      <ambientLight intensity={isMobile ? 0.4 : 0.3} color="#0f0f23" />
       <directionalLight 
-        position={[10, 10, 5]} 
+        position={[5, 8, 5]} 
         intensity={isMobile ? 1.0 : 1.5} 
         color="#ffffff"
       />
       <pointLight 
-        position={[0, 5, 5]} 
-        intensity={isMobile ? 1.0 : 2} 
+        position={[0, 0, 8]} 
+        intensity={isMobile ? 2.0 : 3.0} 
         color="#00aced"
-        distance={15}
+        distance={25}
       />
 
-      {/* Evolved background */}
+      {/* Simple, clean background */}
       <EvolvedBackground />
 
-      {/* Main evolved neural network */}
-      <EvolvedNeuralNetwork />
-
-      {/* Simplified grid for mobile */}
-      <group position={[0, -8, 0]} rotation={[Math.PI / 2, 0, 0]}>
-                <gridHelper
-          args={[isMobile ? 30 : 40, isMobile ? 20 : 30, "#00aced", "#00aced"]}
-        />
+      {/* Main neural network - zoomed in and focused */}
+      <group position={[0, 0, 2]} scale={[1.5, 1.5, 1.5]}>
+        <EvolvedNeuralNetwork />
       </group>
 
-      {/* Reduced floating elements for mobile performance */}
-      {[...Array(isMobile ? 4 : 8)].map((_, i) => (
-        <mesh
-          key={i}
-          position={[
-            Math.sin((i / (isMobile ? 4 : 8)) * Math.PI * 2) * (isMobile ? 8 : 12),
-            Math.cos((i / (isMobile ? 4 : 8)) * Math.PI * 2) * 3,
-            Math.sin((i / (isMobile ? 4 : 8)) * Math.PI * 4) * (isMobile ? 4 : 8)
-          ]}
-        >
-          <sphereGeometry args={[isMobile ? 0.2 : 0.3, 8, 8]} />
-          <meshBasicMaterial
-            color={new THREE.Color().setHSL(0.6 + i * 0.1, 1, 0.5)}
-            transparent
-            opacity={0.6}
-          />
-        </mesh>
-      ))}
+
+
+      {/* Minimal floating accent nodes */}
+      {[...Array(isMobile ? 3 : 5)].map((_, i) => {
+        const radius = isMobile ? 8 : 12;
+        return (
+          <mesh
+            key={i}
+            position={[
+              Math.sin((i / (isMobile ? 3 : 5)) * Math.PI * 2) * radius,
+              Math.cos((i / (isMobile ? 3 : 5)) * Math.PI * 2) * 4,
+              Math.sin((i / (isMobile ? 3 : 5)) * Math.PI * 1.5) * 6
+            ]}
+          >
+            <sphereGeometry args={[0.1, 6, 6]} />
+            <meshBasicMaterial
+              color={new THREE.Color().setHSL(0.55, 0.7, 0.8)}
+              transparent
+              opacity={0.6}
+            />
+          </mesh>
+        );
+      })}
     </group>
   );
 } 
