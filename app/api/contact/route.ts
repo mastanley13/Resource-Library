@@ -53,72 +53,23 @@ function validateFormData(data: any): { valid: boolean; errors?: string[] } {
  */
 export async function POST(request: NextRequest) {
   try {
-    // Get the GHL form URL from environment variables
-    const GHL_FORM_URL = process.env.GHL_FORM_URL;
-    
-    if (!GHL_FORM_URL) {
-      return NextResponse.json(
-        { success: false, message: 'Form submission URL not configured' },
-        { status: 500 }
-      );
-    }
-    
-    // Parse the request body
-    const data = await request.json();
-    
-    // Validate the form data
-    const validation = validateFormData(data);
-    
-    if (!validation.valid) {
-      return NextResponse.json(
-        { success: false, message: 'Invalid form data', errors: validation.errors },
-        { status: 400 }
-      );
-    }
-    
-    // Prepare data for GHL
-    const formData = {
-      name: data.name,
-      email: data.email,
-      company: data.company || '',
-      message: data.message || '',
-      source: 'Website Contact Form',
-      locationId: process.env.GHL_LOCATION_ID || '',
-      // Add any other required GHL fields here
-    };
-    
-    // Send the data to GHL
-    const response = await fetch(GHL_FORM_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    // This endpoint is deprecated - contact form now uses mailto links
+    // and consultation bookings are handled via the /consultation page
+    return NextResponse.json(
+      { 
+        success: false, 
+        message: 'Please use the consultation booking page at /consultation or email us directly at info@strategixai.co',
+        redirect: '/consultation'
       },
-      body: JSON.stringify(formData),
-    });
-    
-    // Check if the submission was successful
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Error submitting to GHL:', errorText);
-      
-      return NextResponse.json(
-        { success: false, message: 'Failed to submit form' },
-        { status: 500 }
-      );
-    }
-    
-    // Return success response
-    return NextResponse.json({
-      success: true,
-      message: 'Form submitted successfully'
-    });
+      { status: 200 }
+    );
     
   } catch (error) {
     console.error('Error processing contact form:', error);
     
     return NextResponse.json(
-      { success: false, message: 'An unexpected error occurred' },
-      { status: 500 }
+      { success: false, message: 'Please visit /consultation to book a call or email us at info@strategixai.co' },
+      { status: 200 }
     );
   }
 } 

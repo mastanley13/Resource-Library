@@ -44,25 +44,39 @@ export default function ContactPage() {
       return;
     }
     
+    // For consultation booking, redirect to consultation page
+    if (window.location.href.includes('book') || formData.message.toLowerCase().includes('call') || formData.message.toLowerCase().includes('consultation')) {
+      window.location.href = '/consultation';
+      return;
+    }
+    
     setIsSubmitting(true);
     setResult(null);
     
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      // Simple email mailto link for general inquiries
+      const emailSubject = encodeURIComponent(`Contact from ${formData.name} - ${formData.company || 'Website'}`);
+      const emailBody = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || 'Not provided'}
+
+Message:
+${formData.message || 'No message provided'}
+      `);
+      
+      const mailtoLink = `mailto:info@strategixai.co?subject=${emailSubject}&body=${emailBody}`;
+      
+      // Try to open email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      setResult({
+        success: true,
+        message: 'Your email client should open with your message. If not, please email us directly at info@strategixai.co'
       });
       
-      const data = await response.json();
-      
-      if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong');
-      }
-      
-      // Reset form on success
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -70,16 +84,10 @@ export default function ContactPage() {
         message: ''
       });
       
-      setResult({
-        success: true,
-        message: 'Thank you! Your message has been sent successfully.'
-      });
     } catch (error) {
       setResult({
         success: false,
-        message: error instanceof Error 
-          ? error.message 
-          : 'Something went wrong. Please try again.'
+        message: 'Please email us directly at info@strategixai.co or use the consultation booking page.'
       });
     } finally {
       setIsSubmitting(false);
@@ -92,9 +100,27 @@ export default function ContactPage() {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
-            <p className="text-lg text-gray-600">
-              Get in touch with our team to discuss how we can help your business leverage AI.
+            <p className="text-lg text-gray-600 mb-6">
+              Ready to book a consultation? Use the button below to schedule your free Discovery Call.
+              <br />
+              For other inquiries, fill out the form and we'll get back to you via email.
             </p>
+            
+            {/* Primary CTA for Consultation */}
+            <div className="mb-8">
+              <a
+                href="/consultation"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-bold text-lg hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-cyan-500/50"
+              >
+                🗓️ Book Your Free 30-Minute Discovery Call
+              </a>
+              <p className="text-sm text-gray-500 mt-2">No commitment • Immediate value • 90-day roadmap</p>
+            </div>
+            
+            <div className="border-t border-gray-200 pt-8">
+              <h2 className="text-2xl font-semibold mb-4">Other Inquiries</h2>
+              <p className="text-gray-600 mb-6">Have questions or need general information? Send us a message below.</p>
+            </div>
           </div>
           
           <div className="bg-white rounded-lg shadow-md p-8">
@@ -167,13 +193,19 @@ export default function ContactPage() {
                 ></textarea>
               </div>
               
-              <div>
+              <div className="space-y-4">
+                <a
+                  href="/consultation"
+                  className="w-full py-3 px-6 text-white bg-gradient-to-r from-cyan-500 to-purple-600 rounded-md font-medium hover:scale-105 transition-all duration-300 text-center block"
+                >
+                  Book My Free Consultation Call
+                </a>
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className={`w-full py-3 px-6 text-white bg-blue-600 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  {isSubmitting ? 'Submitting...' : 'Book My Call'}
+                  {isSubmitting ? 'Sending Email...' : 'Send Email Inquiry'}
                 </button>
               </div>
             </form>
@@ -205,10 +237,10 @@ export default function ContactPage() {
               <p className="text-xl text-gray-300 mb-8">Book a free 30-minute Discovery Call and walk away with a no-nonsense game-plan for your top three bottlenecks—on us.</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="#top"
-                  className="px-6 py-3 bg-orange-500 text-white rounded-md font-medium hover:bg-orange-600 transition"
+                  href="/consultation"
+                  className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-md font-medium hover:scale-105 transition-all duration-300"
                 >
-                  Book Call
+                  Book Free Consultation
                 </a>
                 <a 
                   href="mailto:info@strategixai.co"
@@ -217,7 +249,9 @@ export default function ContactPage() {
                   Email
                 </a>
                 <a 
-                  href="#"
+                  href="https://linkedin.com/company/strategix-ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white border-transparent rounded-md"
                 >
                   LinkedIn

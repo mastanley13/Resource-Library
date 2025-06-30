@@ -360,7 +360,7 @@ export default function Home() {
               
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
                 <a
-                  href="/contact"
+                  href="/consultation"
                   className="group relative px-8 md:px-12 py-4 md:py-6 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50 btn-neural consciousness-pulse"
                 >
                   <span className="relative z-10 text-glow">Start Your AI Journey</span>

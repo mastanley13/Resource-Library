@@ -87,36 +87,7 @@ export default function GHLAgentPage() {
     if (!isLoading) {
       gsap.registerPlugin(ScrollTrigger);
       
-      // Hero section animations
-      gsap.fromTo("#hero-title", 
-        { 
-          opacity: 0, 
-          y: 100,
-          scale: 0.8
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 2,
-          ease: "power3.out",
-          delay: 0.5
-        }
-      );
-
-      gsap.fromTo("#hero-subtitle", 
-        { 
-          opacity: 0, 
-          y: 50 
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.5,
-          ease: "power3.out",
-          delay: 1
-        }
-      );
+      // No hero animations - text appears immediately
 
       // Animate feature cards
       features.forEach((feature, index) => {
@@ -208,9 +179,8 @@ export default function GHLAgentPage() {
           
           {/* Hero Section */}
           <section className="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6">
-            <div className="max-w-5xl mx-auto breathing">
+            <div className="max-w-5xl mx-auto">
               <h1 
-                id="hero-title" 
                 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 leading-tight mb-6 md:mb-8 text-glow-neural"
               >
                 GoHighLevel
@@ -218,7 +188,6 @@ export default function GHLAgentPage() {
                 <span className="text-white text-glow-cyan">MCP AI Agent</span>
               </h1>
               <p 
-                id="hero-subtitle" 
                 className="text-lg md:text-2xl lg:text-3xl text-gray-300 font-light mb-8 md:mb-12 max-w-4xl leading-relaxed"
               >
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-medium text-glow-cyan">
