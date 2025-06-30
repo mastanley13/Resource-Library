@@ -15,6 +15,14 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   distDir: "dist",
+  async rewrites() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig; 
