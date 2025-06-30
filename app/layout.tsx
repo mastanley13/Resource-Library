@@ -2,6 +2,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
+import Header from './components/Header';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,30 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-white/10">
-          <div className="container mx-auto py-3 md:py-4 px-4 md:px-6">
-            <div className="flex justify-between items-center">
-              <div className="text-xl md:text-2xl font-bold">
-                <Link href="/" className="text-white font-bold text-glow-neural">
-                  Strategix<span className="text-cyan-400">AI</span>
-                </Link>
-              </div>
-              <nav className="hidden md:flex space-x-6 lg:space-x-8">
-                <Link href="/" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">Home</Link>
-                <Link href="/products/ghl-agent" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">GHL MCP Agent</Link>
-                <Link href="/contact" className="px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full hover:scale-105 transition-all duration-300 font-bold btn-neural consciousness-pulse">
-                  Book Call
-                </Link>
-              </nav>
-              {/* Mobile Menu Button */}
-              <button className="md:hidden p-2 rounded-lg glass-effect">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </header>
+        <Header />
         
         <main className="min-h-screen pt-16 md:pt-20">
           {children}

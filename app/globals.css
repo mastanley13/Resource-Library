@@ -815,6 +815,32 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* Mobile Menu Enhancements */
+@media (max-width: 767px) {
+  /* Ensure mobile menu appears above all content */
+  header {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  /* Mobile menu backdrop */
+  .mobile-menu-open {
+    overflow: hidden;
+  }
+  
+  /* Smooth mobile menu animations */
+  .mobile-menu-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Enhanced glass effect for mobile */
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+}
+
 /* Container height control */
 #smooth-wrapper {
   min-height: 100vh;
