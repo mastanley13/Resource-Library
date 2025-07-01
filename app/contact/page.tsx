@@ -223,7 +223,7 @@ ${formData.message || 'No message provided'}
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold mb-3">Call Us</h3>
             <p className="text-gray-600">
-              Call our team: <a href="tel:+15551234567" className="text-blue-600 hover:underline">+1 (555) 123-4567</a>
+              Call our team: <a href="tel:+12526756327" className="text-blue-600 hover:underline">(252) 675-6327</a>
             </p>
           </div>
         </div>

@@ -267,14 +267,25 @@ export default function ConsultationPage() {
                 </div>
                 
                 {/* Booking Widget Iframe */}
-                <div className="w-full h-96 md:h-[500px] rounded-lg overflow-hidden border border-white/10">
+                <div className="booking-iframe-container w-full h-[1250px] sm:h-[1200px] md:h-[1100px] lg:h-[1150px] xl:h-[1200px] rounded-lg overflow-hidden border border-white/10 relative">
                   <iframe
                     src="https://api.leadconnectorhq.com/widget/booking/4CbKPiR94XGRIlGtarcU"
                     width="100%"
                     height="100%"
                     frameBorder="0"
-                    className="w-full h-full"
+                    className="w-full h-full border-none outline-none"
                     title="Book Your Discovery Call"
+                    style={{
+                      minHeight: '1100px',
+                      touchAction: 'auto',
+                      overflow: 'hidden',
+                      WebkitOverflowScrolling: 'touch',
+                      border: 'none',
+                      outline: 'none'
+                    }}
+                    allow="fullscreen"
+                    loading="lazy"
+                    scrolling="no"
                   />
                 </div>
                 
@@ -289,10 +300,10 @@ export default function ConsultationPage() {
                       Email Us
                     </a>
                     <a
-                      href="tel:+15551234567"
+                      href="tel:+12526756327"
                       className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 hover:scale-105"
                     >
-                      Call Us
+                      Call Us: (252) 675-6327
                     </a>
                   </div>
                 </div>

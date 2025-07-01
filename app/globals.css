@@ -933,6 +933,98 @@ section {
 }
 
 /* Print Styles */
+/* Mobile iframe optimization - Full booking flow support */
+@media (max-width: 768px) {
+  iframe {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: hidden !important;
+    touch-action: auto !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  .booking-iframe-container {
+    position: relative;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .booking-iframe-container iframe {
+    border-radius: 8px;
+    min-height: 1100px !important;
+    height: 1100px !important;
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Enhanced mobile scrolling for booking widget - Small screens */
+@media (max-width: 640px) {
+  .booking-iframe-container {
+    margin: 0 -1rem;
+    border-radius: 0;
+    /* Ensure full viewport width on mobile */
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    overflow: hidden !important;
+  }
+  
+  .booking-iframe-container iframe {
+    border-radius: 0;
+    min-height: 1200px !important;
+    height: 1200px !important;
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .booking-iframe-container iframe {
+    min-height: 1250px !important;
+    height: 1250px !important;
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .booking-iframe-container iframe {
+    min-height: 800px !important;
+    height: 800px !important;
+  }
+}
+
+/* Global iframe border removal for booking widget */
+.booking-iframe-container iframe {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.booking-iframe-container iframe:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove any potential inner borders from iframe content */
+.booking-iframe-container {
+  border: none !important;
+}
+
+.booking-iframe-container * {
+  box-sizing: border-box;
+}
+
 @media print {
   .neural-particles-bg::before,
   canvas,
