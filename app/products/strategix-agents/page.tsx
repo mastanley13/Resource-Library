@@ -8,8 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import EvolvedScene from "../../../components/EvolvedScene";
 import LoadingScreen from "../../../components/LoadingScreen";
 
-
-
 interface Feature {
   icon: string;
   title: string;
@@ -20,14 +18,14 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: "🧠",
-    title: "Complete GoHighLevel Control",
-    description: "Access 269+ GHL functions via natural language. Say it or type it — it just works.",
+    title: "Complete CRM Control",
+    description: "Access 269+ functions via natural language. Say it or type it — it just works.",
     gradient: "from-cyan-500 to-blue-600"
   },
   {
     icon: "🎙️",
     title: "Voice & Text Interface",
-    description: "Control your CRM using voice or text. Works just like ChatGPT for GHL.",
+    description: "Control your CRM using voice or text. Works just like ChatGPT.",
     gradient: "from-purple-500 to-pink-600"
   },
   {
@@ -58,8 +56,8 @@ const features: Feature[] = [
 
 const whyChooseFeatures = [
   {
-    title: "269 GHL Functions",
-    description: "Every GoHighLevel feature accessible through natural language commands",
+    title: "269 Functions",
+    description: "Every CRM feature accessible through natural language commands",
     icon: "🔧"
   },
   {
@@ -183,18 +181,18 @@ export default function GHLAgentPage() {
               <h1 
                 className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 leading-tight mb-6 md:mb-8 text-glow-neural"
               >
-                GoHighLevel
+                StrategixAgents
                 <br />
-                <span className="text-white text-glow-cyan">MCP AI Agent</span>
+                <span className="text-white text-glow-cyan">AI Assistant</span>
               </h1>
               <p 
                 className="text-lg md:text-2xl lg:text-3xl text-gray-300 font-light mb-8 md:mb-12 max-w-4xl leading-relaxed"
               >
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-medium text-glow-cyan">
-                  269+ GHL Functions
+                  Intelligent Automation
                 </span>
                 <br />
-                Full Control · Voice + Text · Coming Soon to Mobile
+                Tailored to Your Business · Voice + Text · Coming Soon to Mobile
               </p>
               
               {/* Coming Soon Badge */}
@@ -220,14 +218,14 @@ export default function GHLAgentPage() {
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-16">
                 <h2 className="text-3xl md:text-5xl font-black text-white mb-6 text-glow-neural">
-                  Complete GoHighLevel
+                  Your Intelligent
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 text-glow-cyan">
-                    Control
+                    Business Partner
                   </span>
                 </h2>
                 <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-                  Every GoHighLevel feature accessible through natural language commands
+                  A personalized AI agent that adapts to your business needs and workflow
                 </p>
               </div>
 
@@ -264,11 +262,11 @@ export default function GHLAgentPage() {
                   Why Choose Our
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 text-glow-cyan">
-                    HighLevel AI Agent?
+                    AI Assistant?
                   </span>
                 </h2>
                 <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-                  Built specifically for GoHighLevel users who want to maximize their efficiency and scale their operations.
+                  Built specifically for users who want to maximize their efficiency and scale their operations.
                 </p>
               </div>
 
@@ -321,7 +319,7 @@ export default function GHLAgentPage() {
                     </div>
                     <div>
                       <div className="font-medium text-gray-400">Available in</div>
-                      <div className="text-white font-bold">GHL Marketplace</div>
+                      <div className="text-white font-bold">Marketplace</div>
                     </div>
                   </div>
                 </div>
@@ -353,7 +351,7 @@ export default function GHLAgentPage() {
                       ⏰
                     </div>
                     <h3 className="text-2xl font-bold text-red-400 mb-2">Before: Manual Process</h3>
-                    <p className="text-gray-400">Traditional GoHighLevel workflow</p>
+                    <p className="text-gray-400">Traditional workflow</p>
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-3 bg-red-500/10 rounded-lg">
@@ -387,7 +385,7 @@ export default function GHLAgentPage() {
                     <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 flex items-center justify-center text-2xl consciousness-pulse">
                       ⚡
                     </div>
-                    <h3 className="text-2xl font-bold text-green-400 mb-2">After: MCP AI Agent</h3>
+                    <h3 className="text-2xl font-bold text-green-400 mb-2">After: StrategixAgents</h3>
                     <p className="text-gray-400">Voice command workflow</p>
                   </div>
                   <div className="space-y-4">
@@ -497,7 +495,7 @@ export default function GHLAgentPage() {
                   <div className="max-w-3xl mx-auto">
                     <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
                       Stay connected to your business from anywhere. Whether you're in meetings, traveling, or away from your desk, 
-                      your GoHighLevel CRM responds instantly to your voice. 
+                      your CRM responds instantly to your voice. 
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600 font-semibold text-glow-cyan">
                         {" "}Reclaim your time and never miss an opportunity again.
                       </span>
