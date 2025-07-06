@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import EvolvedScene from "../../../components/EvolvedScene";
 import LoadingScreen from "../../../components/LoadingScreen";
+import Image from "next/image";
 
 interface Feature {
   icon: string;
@@ -178,13 +179,16 @@ export default function GHLAgentPage() {
           {/* Hero Section */}
           <section className="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6">
             <div className="max-w-5xl mx-auto">
-              <h1 
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 leading-tight mb-6 md:mb-8 text-glow-neural"
-              >
-                StrategixAgents
-                <br />
-                <span className="text-white text-glow-cyan">AI Assistant</span>
-              </h1>
+              <div className="mb-8">
+                <Image
+                  src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/68696b7ec89afccb43b87509.png"
+                  alt="StrategixAgents AI Assistant"
+                  width={700}
+                  height={175}
+                  priority
+                  className="mx-auto"
+                />
+              </div>
               <p 
                 className="text-lg md:text-2xl lg:text-3xl text-gray-300 font-light mb-8 md:mb-12 max-w-4xl leading-relaxed"
               >

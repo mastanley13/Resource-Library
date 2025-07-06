@@ -300,10 +300,10 @@ export default function ConsultationPage() {
                       Email Us
                     </a>
                     <a
-                      href="tel:+12526756327"
+                      href="tel:+12524182428"
                       className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 hover:scale-105"
                     >
-                      Call Us: (252) 675-6327
+                      Call Us: (252) 418-2428
                     </a>
                   </div>
                 </div>

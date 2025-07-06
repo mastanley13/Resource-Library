@@ -55,64 +55,64 @@ canvas {
 /* Mobile-Optimized Text Glow Effects */
 .text-glow {
   text-shadow: 
-    0 0 5px rgba(0, 172, 237, 0.3),
-    0 0 10px rgba(0, 172, 237, 0.2);
-  animation: glow-pulse-mobile 3s ease-in-out infinite alternate;
+    0 0 2px rgba(0, 172, 237, 0.1),
+    0 0 4px rgba(0, 172, 237, 0.05);
+  animation: glow-pulse-mobile 12s ease-in-out infinite alternate;
 }
 
 .text-glow-purple {
   text-shadow: 
-    0 0 5px rgba(147, 51, 234, 0.3),
-    0 0 10px rgba(147, 51, 234, 0.2);
-  animation: glow-pulse-purple-mobile 3.5s ease-in-out infinite alternate;
+    0 0 2px rgba(147, 51, 234, 0.1),
+    0 0 4px rgba(147, 51, 234, 0.05);
+  animation: glow-pulse-purple-mobile 14s ease-in-out infinite alternate;
 }
 
 .text-glow-cyan {
   text-shadow: 
-    0 0 5px rgba(6, 182, 212, 0.4),
-    0 0 10px rgba(6, 182, 212, 0.2);
-  animation: glow-pulse-cyan-mobile 4s ease-in-out infinite alternate;
+    0 0 2px rgba(6, 182, 212, 0.15),
+    0 0 4px rgba(6, 182, 212, 0.05);
+  animation: glow-pulse-cyan-mobile 16s ease-in-out infinite alternate;
 }
 
 .text-glow-neural {
   text-shadow: 
-    0 0 8px rgba(0, 255, 138, 0.4),
-    0 0 15px rgba(0, 255, 138, 0.2);
-  animation: neural-pulse-mobile 2s ease-in-out infinite;
+    0 0 3px rgba(0, 255, 138, 0.15),
+    0 0 6px rgba(0, 255, 138, 0.05);
+  animation: neural-pulse-mobile 8s ease-in-out infinite;
 }
 
 /* Desktop Enhanced Effects */
 @media (min-width: 768px) {
   .text-glow {
     text-shadow: 
-      0 0 10px rgba(0, 172, 237, 0.4),
-      0 0 20px rgba(0, 172, 237, 0.3),
-      0 0 30px rgba(0, 172, 237, 0.2);
-    animation: glow-pulse 2s ease-in-out infinite alternate;
+      0 0 3px rgba(0, 172, 237, 0.15),
+      0 0 6px rgba(0, 172, 237, 0.1),
+      0 0 9px rgba(0, 172, 237, 0.05);
+    animation: glow-pulse 10s ease-in-out infinite alternate;
   }
 
   .text-glow-purple {
     text-shadow: 
-      0 0 10px rgba(147, 51, 234, 0.4),
-      0 0 20px rgba(147, 51, 234, 0.3),
-      0 0 30px rgba(147, 51, 234, 0.2);
-    animation: glow-pulse-purple 2.5s ease-in-out infinite alternate;
+      0 0 3px rgba(147, 51, 234, 0.15),
+      0 0 6px rgba(147, 51, 234, 0.1),
+      0 0 9px rgba(147, 51, 234, 0.05);
+    animation: glow-pulse-purple 12s ease-in-out infinite alternate;
   }
 
   .text-glow-cyan {
     text-shadow: 
-      0 0 10px rgba(6, 182, 212, 0.5),
-      0 0 20px rgba(6, 182, 212, 0.3),
-      0 0 30px rgba(6, 182, 212, 0.2);
-    animation: glow-pulse-cyan 3s ease-in-out infinite alternate;
+      0 0 3px rgba(6, 182, 212, 0.2),
+      0 0 6px rgba(6, 182, 212, 0.1),
+      0 0 9px rgba(6, 182, 212, 0.05);
+    animation: glow-pulse-cyan 14s ease-in-out infinite alternate;
   }
 
   .text-glow-neural {
     text-shadow: 
-      0 0 15px rgba(0, 255, 138, 0.6),
-      0 0 30px rgba(0, 255, 138, 0.4),
-      0 0 45px rgba(0, 255, 138, 0.2);
-    animation: neural-pulse 1.5s ease-in-out infinite;
+      0 0 5px rgba(0, 255, 138, 0.2),
+      0 0 10px rgba(0, 255, 138, 0.1),
+      0 0 15px rgba(0, 255, 138, 0.05);
+    animation: neural-pulse 8s ease-in-out infinite;
   }
 }
 
@@ -120,52 +120,52 @@ canvas {
 @keyframes glow-pulse-mobile {
   0% { 
     text-shadow: 
-      0 0 5px rgba(0, 172, 237, 0.3),
-      0 0 10px rgba(0, 172, 237, 0.2);
+      0 0 3px rgba(0, 172, 237, 0.2),
+      0 0 6px rgba(0, 172, 237, 0.1);
   }
   100% { 
     text-shadow: 
-      0 0 8px rgba(0, 172, 237, 0.4),
-      0 0 15px rgba(0, 172, 237, 0.3);
+      0 0 5px rgba(0, 172, 237, 0.3),
+      0 0 8px rgba(0, 172, 237, 0.2);
   }
 }
 
 @keyframes glow-pulse-purple-mobile {
   0% { 
     text-shadow: 
-      0 0 5px rgba(147, 51, 234, 0.3),
-      0 0 10px rgba(147, 51, 234, 0.2);
+      0 0 3px rgba(147, 51, 234, 0.2),
+      0 0 6px rgba(147, 51, 234, 0.1);
   }
   100% { 
     text-shadow: 
-      0 0 8px rgba(147, 51, 234, 0.4),
-      0 0 15px rgba(147, 51, 234, 0.3);
+      0 0 5px rgba(147, 51, 234, 0.3),
+      0 0 8px rgba(147, 51, 234, 0.2);
   }
 }
 
 @keyframes glow-pulse-cyan-mobile {
   0% { 
     text-shadow: 
-      0 0 5px rgba(6, 182, 212, 0.4),
-      0 0 10px rgba(6, 182, 212, 0.2);
+      0 0 3px rgba(6, 182, 212, 0.3),
+      0 0 6px rgba(6, 182, 212, 0.1);
   }
   100% { 
     text-shadow: 
-      0 0 8px rgba(6, 182, 212, 0.5),
-      0 0 15px rgba(6, 182, 212, 0.3);
+      0 0 5px rgba(6, 182, 212, 0.4),
+      0 0 8px rgba(6, 182, 212, 0.2);
   }
 }
 
 @keyframes neural-pulse-mobile {
   0%, 100% { 
     text-shadow: 
-      0 0 8px rgba(0, 255, 138, 0.4),
-      0 0 15px rgba(0, 255, 138, 0.2);
+      0 0 5px rgba(0, 255, 138, 0.3),
+      0 0 10px rgba(0, 255, 138, 0.1);
   }
   50% { 
     text-shadow: 
-      0 0 12px rgba(0, 255, 138, 0.5),
-      0 0 20px rgba(0, 255, 138, 0.3);
+      0 0 8px rgba(0, 255, 138, 0.4),
+      0 0 15px rgba(0, 255, 138, 0.2);
   }
 }
 
@@ -174,57 +174,57 @@ canvas {
   @keyframes glow-pulse {
     0% { 
       text-shadow: 
-        0 0 10px rgba(0, 172, 237, 0.4),
-        0 0 20px rgba(0, 172, 237, 0.3),
-        0 0 30px rgba(0, 172, 237, 0.2);
+        0 0 5px rgba(0, 172, 237, 0.3),
+        0 0 10px rgba(0, 172, 237, 0.2),
+        0 0 15px rgba(0, 172, 237, 0.1);
     }
     100% { 
       text-shadow: 
-        0 0 15px rgba(0, 172, 237, 0.6),
-        0 0 25px rgba(0, 172, 237, 0.4),
-        0 0 35px rgba(0, 172, 237, 0.3);
+        0 0 8px rgba(0, 172, 237, 0.4),
+        0 0 15px rgba(0, 172, 237, 0.3),
+        0 0 20px rgba(0, 172, 237, 0.2);
     }
   }
 
   @keyframes glow-pulse-purple {
     0% { 
       text-shadow: 
-        0 0 10px rgba(147, 51, 234, 0.4),
-        0 0 20px rgba(147, 51, 234, 0.3);
+        0 0 5px rgba(147, 51, 234, 0.3),
+        0 0 10px rgba(147, 51, 234, 0.2);
     }
     100% { 
       text-shadow: 
-        0 0 15px rgba(147, 51, 234, 0.6),
-        0 0 25px rgba(147, 51, 234, 0.4),
-        0 0 35px rgba(147, 51, 234, 0.2);
+        0 0 8px rgba(147, 51, 234, 0.4),
+        0 0 15px rgba(147, 51, 234, 0.3),
+        0 0 20px rgba(147, 51, 234, 0.1);
     }
   }
 
   @keyframes glow-pulse-cyan {
     0% { 
       text-shadow: 
-        0 0 10px rgba(6, 182, 212, 0.5),
-        0 0 20px rgba(6, 182, 212, 0.3);
+        0 0 5px rgba(6, 182, 212, 0.4),
+        0 0 10px rgba(6, 182, 212, 0.2);
     }
     100% { 
       text-shadow: 
-        0 0 20px rgba(6, 182, 212, 0.7),
-        0 0 30px rgba(6, 182, 212, 0.5),
-        0 0 40px rgba(6, 182, 212, 0.3);
+        0 0 10px rgba(6, 182, 212, 0.5),
+        0 0 15px rgba(6, 182, 212, 0.3),
+        0 0 20px rgba(6, 182, 212, 0.1);
     }
   }
 
   @keyframes neural-pulse {
     0%, 100% { 
       text-shadow: 
-        0 0 15px rgba(0, 255, 138, 0.6),
-        0 0 30px rgba(0, 255, 138, 0.4);
+        0 0 10px rgba(0, 255, 138, 0.4),
+        0 0 20px rgba(0, 255, 138, 0.2);
     }
     50% { 
       text-shadow: 
-        0 0 25px rgba(0, 255, 138, 0.8),
-        0 0 40px rgba(0, 255, 138, 0.6),
-        0 0 55px rgba(0, 255, 138, 0.4);
+        0 0 15px rgba(0, 255, 138, 0.6),
+        0 0 25px rgba(0, 255, 138, 0.4),
+        0 0 35px rgba(0, 255, 138, 0.2);
     }
   }
 }
@@ -362,7 +362,7 @@ canvas {
 }
 
 .breathing {
-  animation: breathing-mobile 3s ease-in-out infinite;
+  animation: breathing 20s ease-in-out infinite;
 }
 
 .neural-activity {
@@ -387,13 +387,13 @@ canvas {
   }
 
   @keyframes breathing {
-    0%, 100% { 
-      transform: scale(1) rotate(0deg);
-      opacity: 0.8;
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 2px 8px rgba(0, 120, 255, 0.05);
     }
-    50% { 
-      transform: scale(1.05) rotate(2deg);
-      opacity: 1;
+    50% {
+      transform: scale(1.005);
+      box-shadow: 0 4px 15px rgba(0, 100, 255, 0.1);
     }
   }
 
@@ -456,7 +456,7 @@ canvas {
 }
 
 .consciousness-pulse {
-  animation: consciousness-pulse-mobile 2s infinite;
+  animation: consciousness-pulse 15s ease-in-out infinite;
 }
 
 .synaptic-fire {
@@ -466,15 +466,13 @@ canvas {
 /* Desktop enhanced pulses */
 @media (min-width: 768px) {
   @keyframes consciousness-pulse {
-    0%, 100% { 
-      box-shadow: 
-        0 0 0 0 rgba(0, 172, 237, 0.7),
-        0 0 0 0 rgba(0, 255, 138, 0.5);
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.2);
     }
     50% {
-      box-shadow: 
-        0 0 0 15px rgba(0, 172, 237, 0),
-        0 0 0 25px rgba(0, 255, 138, 0);
+      transform: scale(1.01);
+      box-shadow: 0 0 5px 2px rgba(6, 182, 212, 0), 0 0 10px 5px rgba(147, 51, 234, 0);
     }
   }
 
@@ -914,21 +912,14 @@ section {
 }
 
 @keyframes evolveGlow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  25% {
-    opacity: 0.5;
-    transform: scale(1.1);
+  0% {
+    text-shadow: 0 0 20px rgba(0, 255, 138, 0.4), 0 0 40px rgba(0, 255, 138, 0.2);
   }
   50% {
-    opacity: 0.4;
-    transform: scale(0.9);
+    text-shadow: 0 0 30px rgba(0, 255, 138, 0.6), 0 0 50px rgba(0, 255, 138, 0.4);
   }
-  75% {
-    opacity: 0.6;
-    transform: scale(1.05);
+  100% {
+    text-shadow: 0 0 20px rgba(0, 255, 138, 0.4), 0 0 40px rgba(0, 255, 138, 0.2);
   }
 }
 
