@@ -301,6 +301,9 @@ export default function PetSolutionsPage() {
               Schedule a Demo
             </Link>
           </div>
+          <div className="mt-4 mb-4 text-cyan-300 font-semibold text-lg flex justify-center items-center gap-2">
+            <span role="img" aria-label="phone">📞</span> +1 252-427-0115
+          </div>
 
           {/* Stats Preview */}
           <div className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
