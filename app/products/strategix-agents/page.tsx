@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import EvolvedScene from "../../../components/EvolvedScene";
 import LoadingScreen from "../../../components/LoadingScreen";
+import Image from "next/image";
 
 interface Feature {
   icon: string;
@@ -178,13 +179,16 @@ export default function GHLAgentPage() {
           {/* Hero Section */}
           <section className="h-screen flex flex-col items-center justify-center text-center px-4 md:px-6">
             <div className="max-w-5xl mx-auto">
-              <h1 
-                className="text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 leading-tight mb-6 md:mb-8 text-glow-neural"
-              >
-                StrategixAgents
-                <br />
-                <span className="text-white text-glow-cyan">AI Assistant</span>
-              </h1>
+              <div className="mb-8">
+                <Image
+                  src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/68696b7ec89afccb43b87509.png"
+                  alt="StrategixAgents AI Assistant"
+                  width={700}
+                  height={175}
+                  priority
+                  className="mx-auto"
+                />
+              </div>
               <p 
                 className="text-lg md:text-2xl lg:text-3xl text-gray-300 font-light mb-8 md:mb-12 max-w-4xl leading-relaxed"
               >
@@ -198,16 +202,18 @@ export default function GHLAgentPage() {
               {/* Coming Soon Badge */}
               <div className="mb-8 md:mb-12">
                 <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/30 consciousness-pulse">
-                  <span className="text-cyan-400 font-semibold">Download on Mobile: COMING SOON!</span>
+                  <span className="text-cyan-400 font-semibold">Web App Live! Mobile Coming Soon</span>
                 </div>
               </div>
 
               {/* CTA Button */}
               <a
-                href="#waitlist"
+                href="https://www.strategixagents.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative px-8 md:px-12 py-4 md:py-6 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50 btn-neural consciousness-pulse inline-block"
               >
-                <span className="relative z-10 text-glow">Join The Waitlist To Get Early Access →</span>
+                <span className="relative z-10 text-glow">Launch The Web App →</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
               </a>
             </div>
@@ -292,7 +298,7 @@ export default function GHLAgentPage() {
               {/* Mobile App Preview */}
               <div className="mt-16 text-center">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-glow-neural">
-                  Download on Mobile: COMING SOON!
+                  Live on Web! Mobile Coming Soon
                 </h3>
                 <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
                   <div className="flex items-center p-4 glass-effect rounded-xl border border-white/10 opacity-50">
@@ -522,11 +528,12 @@ export default function GHLAgentPage() {
               
               <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
                 <a
-                  id="waitlist"
-                  href="/contact"
+                  href="https://www.strategixagents.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative px-8 md:px-12 py-4 md:py-6 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50 btn-neural consciousness-pulse"
                 >
-                  <span className="relative z-10 text-glow">Get Early Access Now →</span>
+                  <span className="relative z-10 text-glow">Launch The Web App →</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
                 </a>
               </div>

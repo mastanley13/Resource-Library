@@ -4,11 +4,16 @@ import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import Header from './components/Header';
 import './globals.css';
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Strategix AI - AI Consulting, Automation & Training',
+  metadataBase: new URL('https://www.strategixagents.com'),
+  title: {
+    default: 'StrategixAI',
+    template: `%s | StrategixAI`,
+  },
   description: 'AI-powered strategies for modern business growth and optimization.',
 };
 
