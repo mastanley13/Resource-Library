@@ -261,12 +261,14 @@ export default function PetSolutionsPage() {
         
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
           <div className="flex justify-center mb-8">
-            <img
-              src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686c761a15ce2aa35e51b038.png"
-              alt="StrategixPets Logo"
-              className="h-32 md:h-48 w-auto mx-auto drop-shadow-[0_0_32px_rgba(255,140,0,0.45)]"
-              style={{ filter: 'drop-shadow(0 0 32px rgba(255,140,0,0.45))' }}
-            />
+            <div className="relative flex items-center justify-center h-40 w-40 md:h-56 md:w-56 rounded-full bg-gradient-to-br from-orange-400/30 to-cyan-400/20 shadow-2xl ring-4 ring-orange-400/30 ring-offset-2 ring-offset-black animate-pulse-slow">
+              <img
+                src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686c761a15ce2aa35e51b038.png"
+                alt="StrategixPets Logo"
+                className="h-32 w-32 md:h-48 md:w-48 object-cover rounded-full shadow-xl border-4 border-black/40"
+                style={{ background: 'rgba(0,0,0,0.7)', filter: 'drop-shadow(0 0 32px rgba(255,140,0,0.45))' }}
+              />
+            </div>
           </div>
           <div id="hero-title" className="mb-6 md:mb-8">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 text-glow-neural leading-tight">
