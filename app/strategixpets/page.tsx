@@ -662,7 +662,7 @@ export default function PetSolutionsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center text-sm text-gray-400">
               <span>📧 info@strategixai.co</span>
-              <span>📞 (252) 675-6327</span>
+              <span>📞 +1 252-427-0115</span>
               <span>🌐 Available nationwide</span>
             </div>
           </div>
