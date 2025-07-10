@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { useState } from "react";
 import type { Asset } from "./useAssets";
 import { useEffect } from "react";
+import { useFolders, useAssets } from "./useAssets";
 
 function getFileType(extension: string | undefined | null) {
   if (!extension || typeof extension !== 'string') return 'other';
@@ -20,6 +21,10 @@ export default function PreviewDrawer({ asset, onClose }: { asset: Asset, onClos
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { folders, loading: foldersLoading } = useFolders();
+  const { refreshAssets } = useAssets();
+  const [moving, setMoving] = useState(false);
+  const [moveFolderId, setMoveFolderId] = useState<string | null>(asset.folder_id || null);
 
   async function handleDownload() {
     setLoading(true);
@@ -40,6 +45,20 @@ export default function PreviewDrawer({ asset, onClose }: { asset: Asset, onClos
       setError(err.message || "Failed to generate download link");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleMove() {
+    setMoving(true);
+    const { error } = await supabase
+      .from("asset")
+      .update({ folder_id: moveFolderId })
+      .eq("id", asset.id);
+    setMoving(false);
+    if (error) alert(error.message);
+    else {
+      await refreshAssets();
+      onClose();
     }
   }
 
@@ -105,6 +124,26 @@ export default function PreviewDrawer({ asset, onClose }: { asset: Asset, onClos
         >
           Close
         </button>
+        <div className="flex-1">
+          <select
+            className="w-full p-2 rounded bg-[#232837] border border-blue-700 text-gray-200 mb-2"
+            value={moveFolderId || ""}
+            onChange={e => setMoveFolderId(e.target.value || null)}
+            disabled={foldersLoading || moving}
+          >
+            <option value="">No Folder</option>
+            {folders && folders.map(folder => (
+              <option key={folder.id} value={folder.id}>{folder.name}</option>
+            ))}
+          </select>
+          <button
+            className="w-full px-2 py-1 rounded bg-blue-800 text-white text-xs"
+            onClick={handleMove}
+            disabled={moving || (moveFolderId === asset.folder_id)}
+          >
+            {moving ? "Moving..." : "Move"}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -14,6 +14,14 @@ export type Asset = {
   uploaded_by: string;
   created_at: string;
   updated_at: string;
+  folder_id?: string | null;
+};
+
+export type Folder = {
+  id: string;
+  name: string;
+  created_by?: string;
+  created_at?: string;
 };
 
 export function useAssets() {
@@ -49,4 +57,58 @@ export function useAssets() {
   }, []);
 
   return { assets, loading, error, refreshAssets };
+}
+
+export function useFolders() {
+  const [folders, setFolders] = useState<Folder[] | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  async function refreshFolders() {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("folders")
+      .select("*")
+      .order("created_at", { ascending: true });
+    if (error) {
+      setError(error.message);
+      setFolders(null);
+    } else {
+      setFolders(data as Folder[]);
+      setError(null);
+    }
+    setLoading(false);
+  }
+
+  async function createFolder(name: string, created_by?: string) {
+    const { error } = await supabase
+      .from("folders")
+      .insert([{ name, created_by }]);
+    if (!error) await refreshFolders();
+    return error;
+  }
+
+  async function updateFolder(id: string, name: string) {
+    const { error } = await supabase
+      .from("folders")
+      .update({ name })
+      .eq("id", id);
+    if (!error) await refreshFolders();
+    return error;
+  }
+
+  async function deleteFolder(id: string) {
+    const { error } = await supabase
+      .from("folders")
+      .delete()
+      .eq("id", id);
+    if (!error) await refreshFolders();
+    return error;
+  }
+
+  useEffect(() => {
+    refreshFolders();
+  }, []);
+
+  return { folders, loading, error, refreshFolders, createFolder, updateFolder, deleteFolder };
 } 

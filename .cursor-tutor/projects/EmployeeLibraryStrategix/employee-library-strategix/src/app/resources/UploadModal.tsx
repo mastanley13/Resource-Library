@@ -2,11 +2,14 @@
 
 import React, { useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useFolders } from "./useAssets";
 
 export default function UploadModal({ onClose }: { onClose?: () => void }) {
   const [file, setFile] = useState<File | null>(null);
   const [name, setName] = useState("");
   const [tags, setTags] = useState("");
+  const [folderId, setFolderId] = useState<string | null>(null);
+  const { folders, loading: foldersLoading } = useFolders();
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
@@ -61,6 +64,7 @@ export default function UploadModal({ onClose }: { onClose?: () => void }) {
             version: 1,
             uploaded_by: user.id,
             bucket: "assets",
+            folder_id: folderId,
           },
         ]);
       if (metaError) throw metaError;
@@ -68,6 +72,7 @@ export default function UploadModal({ onClose }: { onClose?: () => void }) {
       setFile(null);
       setName("");
       setTags("");
+      setFolderId(null);
       if (onClose) onClose();
     } catch (err: any) {
       setError(err.message || "Upload failed");
@@ -115,6 +120,17 @@ export default function UploadModal({ onClose }: { onClose?: () => void }) {
           onChange={(e) => setTags(e.target.value)}
           disabled={uploading}
         />
+        <select
+          className="w-full mb-4 p-2 rounded bg-[#232837] border border-blue-700 text-gray-200"
+          value={folderId || ""}
+          onChange={e => setFolderId(e.target.value || null)}
+          disabled={foldersLoading || uploading}
+        >
+          <option value="">No Folder</option>
+          {folders && folders.map(folder => (
+            <option key={folder.id} value={folder.id}>{folder.name}</option>
+          ))}
+        </select>
         {error && <div className="text-red-500 mb-2">{error}</div>}
         {success && <div className="text-green-500 mb-2">Upload successful!</div>}
         <div className="flex gap-2">

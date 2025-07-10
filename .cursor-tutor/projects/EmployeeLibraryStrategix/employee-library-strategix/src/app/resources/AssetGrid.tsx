@@ -6,9 +6,15 @@ import { useAssets } from "./useAssets";
 import PreviewDrawer from "./PreviewDrawer";
 import type { Asset } from "./useAssets";
 
-export default function AssetGrid() {
+export default function AssetGrid({ selectedFolder }: { selectedFolder?: string | null }) {
   const { assets, loading, error } = useAssets();
   const [selectedAsset, setSelectedAsset] = React.useState<Asset | null>(null);
+
+  const filteredAssets = React.useMemo(() => {
+    if (!assets) return null;
+    if (!selectedFolder) return assets;
+    return assets.filter(asset => asset.folder_id === selectedFolder);
+  }, [assets, selectedFolder]);
 
   if (loading) {
     // Skeleton loader: show 6 placeholder cards
@@ -27,7 +33,7 @@ export default function AssetGrid() {
   if (error) {
     return <div className="text-red-400 p-8">Error: {error}</div>;
   }
-  if (!assets || assets.length === 0) {
+  if (!filteredAssets || filteredAssets.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center p-12 text-center text-gray-500">
         <img src="/file.svg" alt="No assets" className="w-16 h-16 mb-4 opacity-40" />
@@ -40,7 +46,7 @@ export default function AssetGrid() {
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
-        {assets.map((asset) => (
+        {filteredAssets.map((asset) => (
           <AssetCard key={asset.id} asset={asset} onClick={() => setSelectedAsset(asset)} />
         ))}
       </div>
