@@ -70,7 +70,7 @@ export default function AssetCard({ asset, onClick }: { asset?: Asset, onClick?:
       <div className="flex justify-center gap-2 text-xs text-gray-400 w-full">
         <span>Size: <span className="font-mono">-- KB</span></span>
         <span>•</span>
-        <span>By: <span className="font-mono">{asset.uploaded_by.slice(0, 8)}...</span></span>
+        <span>By: <span className="font-mono">{asset.uploaded_by ? asset.uploaded_by.slice(0, 8) + '...' : 'Unknown'}</span></span>
       </div>
     </div>
   );
