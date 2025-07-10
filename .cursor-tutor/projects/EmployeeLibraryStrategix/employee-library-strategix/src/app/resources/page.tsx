@@ -78,17 +78,17 @@ function Sidebar({ selectedFolder, setSelectedFolder, user }: { selectedFolder: 
 
 export default function ResourcesPage() {
   const [showUpload, setShowUpload] = useState(false);
-  const { assets, loading, error, refreshAssets } = useAssets();
   const [user, setUser] = useState<any>(null);
   const [authLoading, setAuthLoading] = useState(false);
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null);
+  const [search, setSearch] = useState("");
+  const [tag, setTag] = useState("");
+  const { assets, loading, error, refreshAssets } = useAssets();
 
   useEffect(() => {
-    // Check for existing session
     supabase.auth.getUser().then(({ data }) => {
       setUser(data.user);
     });
-    // Listen for auth changes
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -112,6 +112,22 @@ export default function ResourcesPage() {
     setUser(null);
   }
 
+  // Filtering logic
+  const filteredAssets = React.useMemo(() => {
+    if (!assets) return null;
+    let result = assets;
+    if (selectedFolder) {
+      result = result.filter(asset => asset.folder_id === selectedFolder);
+    }
+    if (search) {
+      result = result.filter(asset => asset.name.toLowerCase().includes(search.toLowerCase()));
+    }
+    if (tag) {
+      result = result.filter(asset => asset.tags && asset.tags.includes(tag));
+    }
+    return result;
+  }, [assets, selectedFolder, search, tag]);
+
   return (
     <main className="min-h-screen flex flex-col items-center bg-gradient-to-b from-[#050710] to-black text-gray-200 px-4 py-8">
       <TopNav user={user} onLogin={handleLogin} onLogout={handleLogout} />
@@ -120,7 +136,14 @@ export default function ResourcesPage() {
       <div className="w-full max-w-5xl flex">
         <Sidebar selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder} user={user} />
         <div className="flex-1 min-w-0">
-          <FilterBar />
+          <FilterBar
+            search={search}
+            setSearch={setSearch}
+            tag={tag}
+            setTag={setTag}
+            loading={loading}
+            refreshAssets={refreshAssets}
+          />
           <div className="flex justify-end mb-4">
             <button
               className="px-4 py-2 rounded bg-gradient-to-r from-[#00ffa3] to-[#00ffea] text-black font-semibold shadow hover:brightness-125 transition"
@@ -130,7 +153,7 @@ export default function ResourcesPage() {
               Upload Asset
             </button>
           </div>
-          <AssetGrid selectedFolder={selectedFolder} />
+          <AssetGrid assets={filteredAssets} loading={loading} error={error} />
         </div>
       </div>
       {showUpload && (

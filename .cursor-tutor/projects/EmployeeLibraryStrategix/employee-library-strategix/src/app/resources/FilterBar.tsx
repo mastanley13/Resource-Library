@@ -1,21 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAssets } from "./useAssets";
 
-export default function FilterBar() {
-  const { refreshAssets } = useAssets();
-  const [search, setSearch] = useState("");
-  const [tag, setTag] = useState("");
-  const [loading, setLoading] = useState(false);
-
+export default function FilterBar({
+  search,
+  setSearch,
+  tag,
+  setTag,
+  loading,
+  refreshAssets,
+}: {
+  search: string;
+  setSearch: (s: string) => void;
+  tag: string;
+  setTag: (t: string) => void;
+  loading: boolean;
+  refreshAssets: (opts?: { search?: string; tag?: string }) => Promise<void>;
+}) {
   async function handleFilter(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
     await refreshAssets({ search, tag });
-    setLoading(false);
   }
-
   return (
     <form onSubmit={handleFilter} className="w-full flex flex-col sm:flex-row items-center gap-4 mb-8 p-6 bg-black/30 rounded-lg border border-blue-800 shadow-sm">
       <input
