@@ -63,6 +63,9 @@ export default function Header() {
             <Link href="/products/strategix-agents" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">
               StrategixAgents
             </Link>
+            <Link href="/voiceai" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">
+              VoiceAI
+            </Link>
             <Link href="/pet-solutions" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">
               Pet Solutions
             </Link>
@@ -114,6 +117,13 @@ export default function Header() {
               onClick={closeMobileMenu}
             >
               StrategixAgents
+            </Link>
+            <Link 
+              href="/voiceai" 
+              className="block px-4 py-3 text-gray-300 hover:text-cyan-400 hover:bg-white/5 rounded-lg transition-all duration-300 font-medium"
+              onClick={closeMobileMenu}
+            >
+              VoiceAI
             </Link>
             <Link 
               href="/pet-solutions" 

@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     template: `%s | StrategixAI`,
   },
   description: 'AI-powered strategies for modern business growth and optimization.',
+  icons: {
+    icon: 'https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/669d8f3afe542b7be0510dac.png',
+    shortcut: 'https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/669d8f3afe542b7be0510dac.png',
+    apple: 'https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/669d8f3afe542b7be0510dac.png',
+  },
 };
 
 export default function RootLayout({
