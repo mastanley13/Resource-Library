@@ -366,13 +366,6 @@ export default function Home() {
                   <span className="relative z-10 text-glow">Start Your AI Journey</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
                 </a>
-                
-                <a
-                  href="/process"
-                  className="px-8 md:px-12 py-4 md:py-6 border-2 border-cyan-400 rounded-full text-cyan-400 font-bold text-lg md:text-xl transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-105 holographic breathing"
-                >
-                  Learn Our Process
-                </a>
               </div>
               
               {/* Trust indicators */}

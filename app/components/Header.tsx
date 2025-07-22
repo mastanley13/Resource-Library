@@ -66,8 +66,8 @@ export default function Header() {
             <Link href="/voiceai" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">
               VoiceAI
             </Link>
-            <Link href="/pet-solutions" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">
-              Pet Solutions
+            <Link href="/strategixpets" className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 font-medium">
+              StrategixPets
             </Link>
             <Link href="/consultation" className="px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full hover:scale-105 transition-all duration-300 font-bold btn-neural consciousness-pulse">
               Book Consultation
@@ -126,11 +126,11 @@ export default function Header() {
               VoiceAI
             </Link>
             <Link 
-              href="/pet-solutions" 
+              href="/strategixpets" 
               className="block px-4 py-3 text-gray-300 hover:text-cyan-400 hover:bg-white/5 rounded-lg transition-all duration-300 font-medium"
               onClick={closeMobileMenu}
             >
-              Pet Solutions
+              StrategixPets
             </Link>
             <Link 
               href="/consultation" 

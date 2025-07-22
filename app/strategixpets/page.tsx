@@ -260,6 +260,16 @@ export default function PetSolutionsPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
         
         <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
+          <div className="flex justify-center mb-8">
+            <div className="relative flex items-center justify-center h-40 w-40 md:h-56 md:w-56 rounded-full bg-gradient-to-br from-orange-400/30 to-cyan-400/20 shadow-2xl ring-4 ring-orange-400/30 ring-offset-2 ring-offset-black animate-pulse-slow">
+              <img
+                src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686c761a15ce2aa35e51b038.png"
+                alt="StrategixPets Logo"
+                className="h-32 w-32 md:h-48 md:w-48 object-cover rounded-full shadow-xl border-4 border-black/40"
+                style={{ background: 'rgba(0,0,0,0.7)', filter: 'drop-shadow(0 0 32px rgba(255,140,0,0.45))' }}
+              />
+            </div>
+          </div>
           <div id="hero-title" className="mb-6 md:mb-8">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 text-glow-neural leading-tight">
               Revolutionizing Pet Care
@@ -282,7 +292,7 @@ export default function PetSolutionsPage() {
               href="#solutions" 
               className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full hover:scale-105 transition-all duration-300 font-bold btn-neural consciousness-pulse text-lg"
             >
-              See Our Pet Solutions in Action
+              See Our StrategixPets in Action
             </Link>
             <Link 
               href="/consultation" 
@@ -290,6 +300,9 @@ export default function PetSolutionsPage() {
             >
               Schedule a Demo
             </Link>
+          </div>
+          <div className="mt-4 mb-4 text-cyan-300 font-semibold text-lg flex justify-center items-center gap-2">
+            <span role="img" aria-label="phone">📞</span> +1 252-427-0115
           </div>
 
           {/* Stats Preview */}
@@ -413,7 +426,28 @@ export default function PetSolutionsPage() {
                   <div className="text-8xl md:text-9xl mb-4 consciousness-pulse">{solution.icon}</div>
                   <div className="text-lg text-gray-400 mb-4">System Dashboard Preview</div>
                   <div className="bg-gray-800/50 rounded-lg p-8 border border-gray-700/50">
-                    {solution.id === 'training' ? (
+                    {solution.id === 'boarding' ? (
+                      <div className="space-y-4">
+                        <div className="text-cyan-400 font-bold text-lg mb-4">Boarding System Previews</div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <img
+                            src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686cb6dd1ceb7bb944ebf1e0.png"
+                            alt="Kennel, Boarding Drag & Drop"
+                            className="w-full h-auto rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
+                            onClick={() => setLightboxImage("https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686cb6dd1ceb7bb944ebf1e0.png")}
+                          />
+                          <img
+                            src="https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686cb6dd6f8caf65ef4c2760.png"
+                            alt="Employee Dashboard"
+                            className="w-full h-auto rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-opacity"
+                            onClick={() => setLightboxImage("https://storage.googleapis.com/msgsndr/8lQAYS7QatKYV3ENYdl1/media/686cb6dd6f8caf65ef4c2760.png")}
+                          />
+                        </div>
+                        <div className="text-center text-sm text-gray-400 mt-4">
+                          Drag & drop kennel management and employee dashboard views
+                        </div>
+                      </div>
+                    ) : solution.id === 'training' ? (
                       <img 
                         src="https://storage.googleapis.com/msgsndr/mGAU84INytusQO0Fo5P9/media/6818cfa8f36e2035a64551f9.png" 
                         alt="Training Dashboard Preview" 
@@ -630,8 +664,8 @@ export default function PetSolutionsPage() {
               Ready to see our pet care solutions in action? Contact our team for a personalized demo.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center text-sm text-gray-400">
-              <span>📧 solutions@strategixai.com</span>
-              <span>📞 (555) 123-PETS</span>
+              <span>📧 info@strategixai.co</span>
+              <span>📞 +1 252-427-0115</span>
               <span>🌐 Available nationwide</span>
             </div>
           </div>

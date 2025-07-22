@@ -1,7 +1,7 @@
-# Pet Solutions Page - Content & Structure Plan
+# StrategixPets Page - Content & Structure Plan
 
 ## Overview
-This document outlines the plan for creating an advertising page showcasing Strategix AI's pet solutions, specifically highlighting our work with Champs and the comprehensive pet care management system we've developed.
+This document outlines the plan for creating an advertising page showcasing Strategix AI's StrategixPets solutions, specifically highlighting our work with Champs and the comprehensive pet care management system we've developed.
 
 ## Page Objectives
 - Showcase our expertise in pet care industry solutions
@@ -18,7 +18,7 @@ This document outlines the plan for creating an advertising page showcasing Stra
 
 **Key Elements:**
 - Hero image placeholder: [Screenshot of Champs main dashboard]
-- Call-to-action button: "See Our Pet Solutions in Action"
+- Call-to-action button: "See Our StrategixPets in Action"
 - Brief stats/metrics if available (e.g., "Serving X pets daily", "Y% efficiency improvement")
 
 ### Client Spotlight Section
