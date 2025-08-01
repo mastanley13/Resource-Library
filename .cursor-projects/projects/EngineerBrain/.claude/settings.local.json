@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(npm run dev:*)",
+      "Bash(node:*)",
+      "mcp__ide__getDiagnostics"
+    ],
+    "deny": []
+  }
+}

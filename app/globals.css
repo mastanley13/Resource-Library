@@ -1,0 +1,1106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Variables */
+:root {
+  --color-primary: #00aced;
+  --color-secondary: #9333ea;
+  --color-accent: #f59e0b;
+  --color-neural: #00ff8a;
+  --color-consciousness: #ff006e;
+}
+
+/* Modern Gradient Animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Modern Hover Effects */
+.modern-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth backdrop blur transitions */
+.backdrop-blur-smooth {
+  backdrop-filter: blur(8px);
+  transition: backdrop-filter 0.3s ease;
+}
+
+.backdrop-blur-smooth:hover {
+  backdrop-filter: blur(12px);
+}
+
+/* Modern button animations */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* Modern glass effect with better performance */
+.glass-modern {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Base Styles - Mobile First */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000000;
+  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Mobile-First Responsive Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #7c3aed);
+}
+
+/* Canvas Styles */
+canvas {
+  outline: none;
+  touch-action: none;
+}
+
+/* Simplified and modernized text effects */
+.text-glow-modern {
+  text-shadow: 
+    0 0 10px rgba(59, 130, 246, 0.3),
+    0 0 20px rgba(59, 130, 246, 0.2),
+    0 0 30px rgba(59, 130, 246, 0.1);
+}
+
+.text-glow-purple-modern {
+  text-shadow: 
+    0 0 10px rgba(139, 92, 246, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2),
+    0 0 30px rgba(139, 92, 246, 0.1);
+}
+
+/* Legacy glow effects (keeping for backwards compatibility) */
+.text-glow {
+  text-shadow: 
+    0 0 2px rgba(0, 172, 237, 0.1),
+    0 0 4px rgba(0, 172, 237, 0.05);
+  animation: glow-pulse-mobile 12s ease-in-out infinite alternate;
+}
+
+.text-glow-purple {
+  text-shadow: 
+    0 0 2px rgba(147, 51, 234, 0.1),
+    0 0 4px rgba(147, 51, 234, 0.05);
+  animation: glow-pulse-purple-mobile 14s ease-in-out infinite alternate;
+}
+
+.text-glow-cyan {
+  text-shadow: 
+    0 0 2px rgba(6, 182, 212, 0.15),
+    0 0 4px rgba(6, 182, 212, 0.05);
+  animation: glow-pulse-cyan-mobile 16s ease-in-out infinite alternate;
+}
+
+.text-glow-neural {
+  text-shadow: 
+    0 0 3px rgba(0, 255, 138, 0.15),
+    0 0 6px rgba(0, 255, 138, 0.05);
+  animation: neural-pulse-mobile 8s ease-in-out infinite;
+}
+
+/* Desktop Enhanced Effects */
+@media (min-width: 768px) {
+  .text-glow {
+    text-shadow: 
+      0 0 3px rgba(0, 172, 237, 0.15),
+      0 0 6px rgba(0, 172, 237, 0.1),
+      0 0 9px rgba(0, 172, 237, 0.05);
+    animation: glow-pulse 10s ease-in-out infinite alternate;
+  }
+
+  .text-glow-purple {
+    text-shadow: 
+      0 0 3px rgba(147, 51, 234, 0.15),
+      0 0 6px rgba(147, 51, 234, 0.1),
+      0 0 9px rgba(147, 51, 234, 0.05);
+    animation: glow-pulse-purple 12s ease-in-out infinite alternate;
+  }
+
+  .text-glow-cyan {
+    text-shadow: 
+      0 0 3px rgba(6, 182, 212, 0.2),
+      0 0 6px rgba(6, 182, 212, 0.1),
+      0 0 9px rgba(6, 182, 212, 0.05);
+    animation: glow-pulse-cyan 14s ease-in-out infinite alternate;
+  }
+
+  .text-glow-neural {
+    text-shadow: 
+      0 0 5px rgba(0, 255, 138, 0.2),
+      0 0 10px rgba(0, 255, 138, 0.1),
+      0 0 15px rgba(0, 255, 138, 0.05);
+    animation: neural-pulse 8s ease-in-out infinite;
+  }
+}
+
+/* Mobile-Optimized Pulse Animations */
+@keyframes glow-pulse-mobile {
+  0% { 
+    text-shadow: 
+      0 0 3px rgba(0, 172, 237, 0.2),
+      0 0 6px rgba(0, 172, 237, 0.1);
+  }
+  100% { 
+    text-shadow: 
+      0 0 5px rgba(0, 172, 237, 0.3),
+      0 0 8px rgba(0, 172, 237, 0.2);
+  }
+}
+
+@keyframes glow-pulse-purple-mobile {
+  0% { 
+    text-shadow: 
+      0 0 3px rgba(147, 51, 234, 0.2),
+      0 0 6px rgba(147, 51, 234, 0.1);
+  }
+  100% { 
+    text-shadow: 
+      0 0 5px rgba(147, 51, 234, 0.3),
+      0 0 8px rgba(147, 51, 234, 0.2);
+  }
+}
+
+@keyframes glow-pulse-cyan-mobile {
+  0% { 
+    text-shadow: 
+      0 0 3px rgba(6, 182, 212, 0.3),
+      0 0 6px rgba(6, 182, 212, 0.1);
+  }
+  100% { 
+    text-shadow: 
+      0 0 5px rgba(6, 182, 212, 0.4),
+      0 0 8px rgba(6, 182, 212, 0.2);
+  }
+}
+
+@keyframes neural-pulse-mobile {
+  0%, 100% { 
+    text-shadow: 
+      0 0 5px rgba(0, 255, 138, 0.3),
+      0 0 10px rgba(0, 255, 138, 0.1);
+  }
+  50% { 
+    text-shadow: 
+      0 0 8px rgba(0, 255, 138, 0.4),
+      0 0 15px rgba(0, 255, 138, 0.2);
+  }
+}
+
+/* Desktop-specific enhanced animations */
+@media (min-width: 768px) {
+  @keyframes glow-pulse {
+    0% { 
+      text-shadow: 
+        0 0 5px rgba(0, 172, 237, 0.3),
+        0 0 10px rgba(0, 172, 237, 0.2),
+        0 0 15px rgba(0, 172, 237, 0.1);
+    }
+    100% { 
+      text-shadow: 
+        0 0 8px rgba(0, 172, 237, 0.4),
+        0 0 15px rgba(0, 172, 237, 0.3),
+        0 0 20px rgba(0, 172, 237, 0.2);
+    }
+  }
+
+  @keyframes glow-pulse-purple {
+    0% { 
+      text-shadow: 
+        0 0 5px rgba(147, 51, 234, 0.3),
+        0 0 10px rgba(147, 51, 234, 0.2);
+    }
+    100% { 
+      text-shadow: 
+        0 0 8px rgba(147, 51, 234, 0.4),
+        0 0 15px rgba(147, 51, 234, 0.3),
+        0 0 20px rgba(147, 51, 234, 0.1);
+    }
+  }
+
+  @keyframes glow-pulse-cyan {
+    0% { 
+      text-shadow: 
+        0 0 5px rgba(6, 182, 212, 0.4),
+        0 0 10px rgba(6, 182, 212, 0.2);
+    }
+    100% { 
+      text-shadow: 
+        0 0 10px rgba(6, 182, 212, 0.5),
+        0 0 15px rgba(6, 182, 212, 0.3),
+        0 0 20px rgba(6, 182, 212, 0.1);
+    }
+  }
+
+  @keyframes neural-pulse {
+    0%, 100% { 
+      text-shadow: 
+        0 0 10px rgba(0, 255, 138, 0.4),
+        0 0 20px rgba(0, 255, 138, 0.2);
+    }
+    50% { 
+      text-shadow: 
+        0 0 15px rgba(0, 255, 138, 0.6),
+        0 0 25px rgba(0, 255, 138, 0.4),
+        0 0 35px rgba(0, 255, 138, 0.2);
+    }
+  }
+}
+
+/* Mobile-First Button Effects */
+.btn-glow:hover {
+  box-shadow: 
+    0 0 10px rgba(0, 172, 237, 0.3),
+    0 0 20px rgba(0, 172, 237, 0.2);
+  transform: translateY(-1px) scale(1.01);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .btn-glow:hover {
+    box-shadow: 
+      0 0 20px rgba(0, 172, 237, 0.5),
+      0 0 40px rgba(0, 172, 237, 0.3),
+      0 0 60px rgba(0, 172, 237, 0.1);
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+.btn-neural {
+  background: linear-gradient(45deg, #00aced, #00ff8a);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-neural::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-neural:hover::before {
+  left: 100%;
+}
+
+/* Simplified Background Animations for Mobile */
+@keyframes gradient-shift-mobile {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes consciousness-flow-mobile {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 50% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #000000, #001122, #000033);
+  background-size: 200% 200%;
+  animation: gradient-shift-mobile 20s ease infinite;
+}
+
+.consciousness-bg {
+  background: linear-gradient(-45deg, #000011, #001133, #000055);
+  background-size: 300% 300%;
+  animation: consciousness-flow-mobile 25s ease infinite;
+}
+
+/* Desktop enhanced backgrounds */
+@media (min-width: 768px) {
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes consciousness-flow {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
+  .animated-gradient {
+    background: linear-gradient(-45deg, #000000, #001122, #000033, #001144);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  .consciousness-bg {
+    background: linear-gradient(-45deg, #000011, #001133, #000055, #002244, #000066);
+    background-size: 600% 600%;
+    animation: consciousness-flow 20s ease infinite;
+  }
+}
+
+/* Mobile-Optimized Movement Animations */
+@keyframes organic-float-mobile {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(1deg); 
+  }
+}
+
+@keyframes breathing-mobile {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes neural-activity-mobile {
+  0% { 
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.01);
+    filter: brightness(1.1);
+  }
+  100% { 
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.organic-float {
+  animation: organic-float-mobile 6s ease-in-out infinite;
+}
+
+.breathing {
+  animation: breathing 20s ease-in-out infinite;
+}
+
+.neural-activity {
+  animation: neural-activity-mobile 4s ease-in-out infinite;
+}
+
+/* Desktop enhanced movement */
+@media (min-width: 768px) {
+  @keyframes organic-float {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg); 
+    }
+    25% { 
+      transform: translateY(-15px) translateX(5px) rotate(1deg); 
+    }
+    50% { 
+      transform: translateY(-10px) translateX(-3px) rotate(-0.5deg); 
+    }
+    75% { 
+      transform: translateY(-20px) translateX(8px) rotate(1.5deg); 
+    }
+  }
+
+  @keyframes breathing {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 2px 8px rgba(0, 120, 255, 0.05);
+    }
+    50% {
+      transform: scale(1.005);
+      box-shadow: 0 4px 15px rgba(0, 100, 255, 0.1);
+    }
+  }
+
+  @keyframes neural-activity {
+    0% { 
+      transform: scale(1);
+      filter: brightness(1) hue-rotate(0deg);
+    }
+    25% { 
+      transform: scale(1.02);
+      filter: brightness(1.1) hue-rotate(45deg);
+    }
+    50% { 
+      transform: scale(1.05);
+      filter: brightness(1.2) hue-rotate(90deg);
+    }
+    75% { 
+      transform: scale(1.02);
+      filter: brightness(1.1) hue-rotate(135deg);
+    }
+    100% { 
+      transform: scale(1);
+      filter: brightness(1) hue-rotate(180deg);
+    }
+  }
+
+  .organic-float {
+    animation: organic-float 8s ease-in-out infinite;
+  }
+
+  .breathing {
+    animation: breathing 4s ease-in-out infinite;
+  }
+
+  .neural-activity {
+    animation: neural-activity 3s ease-in-out infinite;
+  }
+}
+
+/* Simplified Pulse Effects for Mobile */
+@keyframes consciousness-pulse-mobile {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(0, 172, 237, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 172, 237, 0);
+  }
+}
+
+@keyframes synaptic-fire-mobile {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.consciousness-pulse {
+  animation: consciousness-pulse 15s ease-in-out infinite;
+}
+
+.synaptic-fire {
+  animation: synaptic-fire-mobile 1.5s infinite;
+}
+
+/* Desktop enhanced pulses */
+@media (min-width: 768px) {
+  @keyframes consciousness-pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.2);
+    }
+    50% {
+      transform: scale(1.01);
+      box-shadow: 0 0 5px 2px rgba(6, 182, 212, 0), 0 0 10px 5px rgba(147, 51, 234, 0);
+    }
+  }
+
+  @keyframes synaptic-fire {
+    0% { 
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+
+  .consciousness-pulse {
+    animation: consciousness-pulse 3s infinite;
+  }
+
+  .synaptic-fire {
+    animation: synaptic-fire 1s infinite;
+  }
+}
+
+/* Simplified Liquid Effects for Mobile */
+@keyframes liquid-morph-mobile {
+  0% { 
+    border-radius: 50% 40% 60% 50%;
+  }
+  50% { 
+    border-radius: 40% 60% 50% 40%;
+  }
+  100% { 
+    border-radius: 50% 40% 60% 50%;
+  }
+}
+
+.liquid-morph {
+  animation: liquid-morph-mobile 6s ease-in-out infinite;
+}
+
+/* Desktop enhanced liquid effects */
+@media (min-width: 768px) {
+  @keyframes liquid-morph {
+    0% { 
+      border-radius: 50% 30% 40% 60%;
+      transform: rotate(0deg);
+    }
+    25% { 
+      border-radius: 30% 60% 50% 40%;
+      transform: rotate(90deg);
+    }
+    50% { 
+      border-radius: 60% 40% 30% 50%;
+      transform: rotate(180deg);
+    }
+    75% { 
+      border-radius: 40% 50% 60% 30%;
+      transform: rotate(270deg);
+    }
+    100% { 
+      border-radius: 50% 30% 40% 60%;
+      transform: rotate(360deg);
+    }
+  }
+
+  .liquid-morph {
+    animation: liquid-morph 8s ease-in-out infinite;
+  }
+}
+
+/* Enhanced Glass Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 172, 237, 0.1),
+      transparent
+    );
+    transition: left 1s ease;
+  }
+
+  .glass-effect:hover::before {
+    left: 100%;
+  }
+}
+
+/* Simplified Holographic for Mobile */
+.holographic {
+  background: rgba(0, 172, 237, 0.05);
+  border: 1px solid rgba(0, 255, 138, 0.2);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .holographic {
+    background: linear-gradient(
+      45deg,
+      rgba(0, 172, 237, 0.1),
+      rgba(0, 255, 138, 0.1),
+      rgba(147, 51, 234, 0.1)
+    );
+    background-size: 300% 300%;
+    animation: holographic-shift 5s ease infinite;
+    border: 1px solid rgba(0, 255, 138, 0.3);
+  }
+
+  @keyframes holographic-shift {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+}
+
+/* Mobile-Optimized Feature Items */
+.feature-item {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 255, 138, 0.03);
+  border-color: rgba(0, 255, 138, 0.2);
+}
+
+@media (min-width: 768px) {
+  .feature-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 138, 0.2),
+      transparent
+    );
+    transition: left 0.8s ease;
+  }
+
+  .feature-item:hover::before {
+    left: 100%;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: rgba(0, 255, 138, 0.05);
+    border-color: rgba(0, 255, 138, 0.3);
+    box-shadow: 
+      0 10px 25px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(0, 255, 138, 0.2);
+  }
+}
+
+/* Simplified neural particles for mobile */
+.neural-particles-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, #00aced, transparent),
+    radial-gradient(1px 1px at 40px 70px, #00ff8a, transparent),
+    radial-gradient(1px 1px at 90px 40px, #9333ea, transparent);
+  background-repeat: repeat;
+  background-size: 150px 100px;
+  animation: neural-particles-flow-mobile 40s linear infinite;
+  opacity: 0.2;
+}
+
+@media (min-width: 768px) {
+  .neural-particles-bg::before {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #00aced, transparent),
+      radial-gradient(2px 2px at 40px 70px, #00ff8a, transparent),
+      radial-gradient(1px 1px at 90px 40px, #9333ea, transparent),
+      radial-gradient(1px 1px at 130px 80px, #ff006e, transparent),
+      radial-gradient(2px 2px at 160px 30px, rgba(255,255,255,0.1), transparent),
+      radial-gradient(1px 1px at 200px 60px, #00aced, transparent);
+    background-size: 300px 200px;
+    animation: neural-particles-flow 30s linear infinite;
+    opacity: 0.4;
+  }
+
+  @keyframes neural-particles-flow {
+    0% { 
+      transform: translate(0, 0) rotate(0deg);
+      filter: hue-rotate(0deg);
+    }
+    25% { 
+      transform: translate(-75px, -50px) rotate(90deg);
+      filter: hue-rotate(90deg);
+    }
+    50% { 
+      transform: translate(-150px, -100px) rotate(180deg);
+      filter: hue-rotate(180deg);
+    }
+    75% { 
+      transform: translate(-225px, -150px) rotate(270deg);
+      filter: hue-rotate(270deg);
+    }
+    100% { 
+      transform: translate(-300px, -200px) rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
+  }
+}
+
+@keyframes neural-particles-flow-mobile {
+  0% { 
+    transform: translate(0, 0);
+  }
+  100% { 
+    transform: translate(-150px, -100px);
+  }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 767px) {
+  * {
+    will-change: auto !important;
+  }
+  
+  .organic-float,
+  .breathing,
+  .neural-activity {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+/* Text Wrapping and Overflow Prevention */
+.break-words {
+  word-break: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Responsive Title Classes */
+.responsive-title {
+  word-break: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Mobile text sizing */
+@media (max-width: 640px) {
+  .responsive-title {
+    font-size: clamp(1.5rem, 7vw, 2.25rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+  }
+  
+  h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem) !important;
+    line-height: 1.1 !important;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 7vw, 2.25rem) !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* Tablet text sizing */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-title {
+    font-size: clamp(2rem, 6vw, 3rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+  }
+}
+
+/* Desktop text sizing */
+@media (min-width: 1025px) {
+  .responsive-title {
+    font-size: clamp(2.5rem, 4vw, 4rem) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+  }
+}
+
+/* Container constraints */
+.text-container {
+  max-width: 100%;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* Prevent extra height/space issues */
+body, html {
+  overflow-x: hidden;
+}
+
+#smooth-wrapper {
+  overflow-x: hidden;
+}
+
+/* Prevent any overflow scrolling */
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Mobile Menu Enhancements */
+@media (max-width: 767px) {
+  /* Ensure mobile menu appears above all content */
+  header {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  /* Mobile menu backdrop */
+  .mobile-menu-open {
+    overflow: hidden;
+  }
+  
+  /* Smooth mobile menu animations */
+  .mobile-menu-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Enhanced glass effect for mobile */
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+}
+
+/* Container height control */
+#smooth-wrapper {
+  min-height: 100vh;
+}
+
+/* Ensure final section ends properly */
+section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+}
+
+/* Fix section visibility */
+section {
+  position: relative;
+  z-index: 10;
+  background: transparent;
+}
+
+/* Ensure Why Choose section is always visible */
+#why-choose {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+/* Evolving background animation */
+.evolving-background {
+  position: relative;
+  background: linear-gradient(135deg, 
+    rgba(2, 8, 23, 0.95) 0%,
+    rgba(8, 2, 28, 0.95) 25%,
+    rgba(2, 18, 12, 0.95) 50%,
+    rgba(23, 12, 2, 0.95) 75%,
+    rgba(18, 18, 2, 0.95) 100%
+  );
+  background-size: 400% 400%;
+  animation: evolveBackground 20s ease-in-out infinite;
+}
+
+.evolving-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 172, 237, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+  animation: evolveGlow 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes evolveBackground {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  20% {
+    background-position: 25% 25%;
+  }
+  40% {
+    background-position: 50% 75%;
+  }
+  60% {
+    background-position: 75% 25%;
+  }
+  80% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes evolveGlow {
+  0% {
+    text-shadow: 0 0 20px rgba(0, 255, 138, 0.4), 0 0 40px rgba(0, 255, 138, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 30px rgba(0, 255, 138, 0.6), 0 0 50px rgba(0, 255, 138, 0.4);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(0, 255, 138, 0.4), 0 0 40px rgba(0, 255, 138, 0.2);
+  }
+}
+
+/* Print Styles */
+/* Mobile iframe optimization - Full booking flow support */
+@media (max-width: 768px) {
+  iframe {
+    -webkit-overflow-scrolling: touch !important;
+    overflow: hidden !important;
+    touch-action: auto !important;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+  
+  .booking-iframe-container {
+    position: relative;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .booking-iframe-container iframe {
+    border-radius: 8px;
+    min-height: 1100px !important;
+    height: 1100px !important;
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Enhanced mobile scrolling for booking widget - Small screens */
+@media (max-width: 640px) {
+  .booking-iframe-container {
+    margin: 0 -1rem;
+    border-radius: 0;
+    /* Ensure full viewport width on mobile */
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    overflow: hidden !important;
+  }
+  
+  .booking-iframe-container iframe {
+    border-radius: 0;
+    min-height: 1200px !important;
+    height: 1200px !important;
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .booking-iframe-container iframe {
+    min-height: 1250px !important;
+    height: 1250px !important;
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .booking-iframe-container iframe {
+    min-height: 800px !important;
+    height: 800px !important;
+  }
+}
+
+/* Global iframe border removal for booking widget */
+.booking-iframe-container iframe {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.booking-iframe-container iframe:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove any potential inner borders from iframe content */
+.booking-iframe-container {
+  border: none !important;
+}
+
+.booking-iframe-container * {
+  box-sizing: border-box;
+}
+
+@media print {
+  .neural-particles-bg::before,
+  canvas,
+  .glass-effect,
+  .holographic {
+    display: none !important;
+  }
+} 

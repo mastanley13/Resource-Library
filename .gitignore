@@ -1,0 +1,22 @@
+# OS
+.DS_Store
+
+# Local env files
+.env.local
+
+# Vercel metadata
+.vercel/
+
+# Node deps
+node_modules/
+
+# Build outputs
+.next/
+dist/
+server/public/
+
+# Vite config snapshots
+vite.config.ts.*
+
+# Archives
+*.tar.gz
